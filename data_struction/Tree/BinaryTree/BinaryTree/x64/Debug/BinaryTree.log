@@ -1,0 +1,6 @@
+﻿  BinTree.c
+  Queue.c
+  test.c
+  正在生成代码...
+D:\C\gitee\Data_struction\BinaryTree\BinaryTree\BinTree.c(96,1): warning C4715: “Is_Complete_Tree”: 不是所有的控件路径都返回值
+  BinaryTree.vcxproj -> D:\C\gitee\Data_struction\BinaryTree\x64\Debug\BinaryTree.exe

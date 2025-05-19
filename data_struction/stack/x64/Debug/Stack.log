@@ -1,0 +1,4 @@
+﻿  test.c
+D:\C\gitee\Data_struction\Stack\Stack\test.c(21,25): warning C4013: “cal”未定义；假设外部返回 int
+D:\C\gitee\Data_struction\Stack\Stack\test.c(54,1): warning C4715: “cal”: 不是所有的控件路径都返回值
+  Stack.vcxproj -> D:\C\gitee\Data_struction\Stack\x64\Debug\Stack.exe
