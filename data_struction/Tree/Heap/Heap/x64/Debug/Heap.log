@@ -1,5 +1,0 @@
-﻿  Heap.c
-  test.c
-D:\C\gitee\Data_struction\Heap\Heap\test.c(39,3): warning C4013: “AdjustDown”未定义；假设外部返回 int
-  正在生成代码...
-  Heap.vcxproj -> D:\C\gitee\Data_struction\Heap\x64\Debug\Heap.exe

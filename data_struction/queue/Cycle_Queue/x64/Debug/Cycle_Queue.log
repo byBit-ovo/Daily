@@ -1,3 +1,0 @@
-﻿  cycle_queue.c
-D:\C\code\test.c\Cycle_Queue\Cycle_Queue\cycle_queue.c(8): warning C4716: “myCircularQueueCreate”: 必须返回一个值
-  Cycle_Queue.vcxproj -> D:\C\code\test.c\Cycle_Queue\x64\Debug\Cycle_Queue.exe
