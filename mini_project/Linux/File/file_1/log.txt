@@ -1,0 +1,8 @@
+write:4
+write:4
+write:4
+write:4
+write:4
+hello printf:1
+hello fprintf:2
+hello:fwrite:3

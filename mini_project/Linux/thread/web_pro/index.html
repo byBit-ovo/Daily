@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>星座&人品测试器</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; }
+    input, button { padding: 10px; margin: 10px 0; width: 100%; max-width: 300px; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>星座&人品测试器</h1>
+  
+  <label>输入姓名（可选）:</label>
+  <input type="text" id="name" placeholder="张三">
+  
+  <label>输入出生日期:</label>
+  <input type="date" id="birthdate">
+  
+  <button onclick="checkUser()">测一测</button>
+  
+  <div id="result"></div>
+  
+  <script src="checker.js"></script>
+</body>
+</html>

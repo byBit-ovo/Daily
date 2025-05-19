@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>QQ登录界面</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(#6fb1fc, #4364f7);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Arial", sans-serif;
+        }
+        .login-container {
+            background: #f2f7f7;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            width: 300px;
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #555;
+        }
+        .input-group input[type="text"],
+        .input-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .checkbox-group {
+            margin-bottom: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+        .checkbox-group input {
+            margin-right: 5px;
+        }
+        .login-btn {
+            width: 100%;
+            background: #3399ff;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background: #287bce;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>QQ登录</h2>
+    <form>
+        <div class="input-group">
+            <label for="username">账号</label>
+            <input type="text" id="username" name="username" placeholder="请输入账号">
+        </div>
+        <div class="input-group">
+            <label for="password">密码</label>
+            <input type="password" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="remember">记住密码</label>
+            <label><input type="checkbox" name="autologin">自动登录</label>
+        </div>
+        <button type="submit" class="login-btn">登录</button>
+    </form>
+</div>
+
+</body>
+</html>
