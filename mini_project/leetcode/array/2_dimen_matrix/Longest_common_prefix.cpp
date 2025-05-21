@@ -1,4 +1,9 @@
-class Solution {
+#include <vector>
+#include <string>
+
+using namespace std;
+class Solution
+{
 public:
     string longestCommonPrefix(vector<string>& strs) {
 
@@ -19,8 +24,12 @@ public:
             {
                 if(strs[j][i] != c)
                 {
-                    return strs[0].substr(0,i);    
+                    break;
                 }
+            }
+            if(j != strs.size())
+            {
+                break;
             }
         }
 
@@ -28,4 +37,3 @@ public:
         
     }
 };
-
