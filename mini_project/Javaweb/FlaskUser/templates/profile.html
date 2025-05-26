@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>欢迎，{{ username }}</h2>
+<h4>当前头像</h4>
+{% if avatars %}
+  <img src="{{ url_for('static', filename='uploads/' + username + '/' + avatars[0]['filename']) }}"
+       style="max-width:150px;" class="img-thumbnail">
+{% else %}
+  <p>暂无头像</p>
+{% endif %}
+<hr>
+<h4>上传新头像</h4>
+<form method="post" enctype="multipart/form-data">
+  <div class="form-group">
+    <input type="file" name="avatar" class="form-control-file" required>
+  </div>
+  <button type="submit" class="btn btn-primary">上传</button>
+</form>
+<hr>
+<h4>历史头像</h4>
+<ul>
+{% for avatar in avatars[1:] %}
+  <li>
+    <img src="{{ url_for('static', filename='uploads/' + username + '/' + avatar['filename']) }}"
+         style="max-width:100px;" class="img-thumbnail">
+    上传时间：{{ avatar['upload_time'] }}
+  </li>
+{% endfor %}
+</ul>
+<p><a href="{{ url_for('logout') }}">退出登录</a></p>
+{% endblock %}

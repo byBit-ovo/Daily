@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS avatars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    filename TEXT NOT NULL,
+    upload_time TEXT NOT NULL,
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
