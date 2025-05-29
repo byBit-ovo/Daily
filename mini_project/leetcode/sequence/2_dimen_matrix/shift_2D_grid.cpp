@@ -1,4 +1,4 @@
-This solution makes me look very fool.....wuwuwuwu....
+//This solution makes me look very fool.....wuwuwuwu....
 class Solution {
 public:
     void shift(vector<vector<int>>& grid)
@@ -28,4 +28,33 @@ public:
     }
 private:
     std::vector<vector<int>> tmp;
+};
+//seems better... I'm back! 
+class Solution2 {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        m=grid.size(),n=grid[0].size();
+        k%=m*n;
+        for(int i=0;i<k;++i){
+            shift(grid);
+        }
+        return grid;
+
+    }
+private:
+    int m,n;
+    void shift(vector<vector<int>>& grid)
+    {
+        auto tmp = grid;
+        for(int i=0;i<m;++i)
+        {
+            for(int j=0;j<n;++j)
+            {
+                int new_row = (i + (j+1)/n)%m;
+                int new_col = (j+1)%n;
+                tmp[new_row][new_col] = grid[i][j];
+            }
+        }
+        grid=tmp;
+    }
 };
