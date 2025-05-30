@@ -1,5 +1,8 @@
 //This solution makes me look very fool.....wuwuwuwu....
-class Solution {
+#include <vector>
+using namespace std;
+class Solution
+{
 public:
     void shift(vector<vector<int>>& grid)
     {
@@ -56,5 +59,26 @@ private:
             }
         }
         grid=tmp;
+    }
+};
+//The elegant power of mode,it's magical.
+class Solution3 {
+public:
+    vector<vector<int>> shiftGrid(vector<vector<int>>& grid, int k) {
+        int m=grid.size(),n=grid[0].size();
+        k%=m*n;
+        auto tmp = grid;
+        for(int i=0;i<m;++i)
+        {
+            for(int j=0;j<n;++j)
+            {
+                int new_row = (i + (j+k)/n)%m;
+                int new_col = (j+k)%n;
+                tmp[new_row][new_col] = grid[i][j];
+            }
+        }
+        grid=tmp;
+        return grid;
+
     }
 };
