@@ -16,6 +16,11 @@ class unordered_Map{
     bool erase(const K& key){
         return _hash_table.erase(key);
     }
+    int bucket_size()
+    {
+        return _hash_table.size();
+    }
+
     private:
     hashTable<K,pair<const K,V>,mapkeyOfv,hash> _hash_table;
 };

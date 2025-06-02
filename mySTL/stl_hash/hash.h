@@ -86,10 +86,12 @@ struct hashFunc<string>{
 template<class K,class V,class keyOfv,class hash>
 class hashTable{
     public:
-    typedef hashNode<V> node;
-    hashTable(){
-        _table.resize(10,nullptr);
-    }
+        int size() { return _table.size(); }
+        typedef hashNode<V> node;
+        hashTable()
+        {
+            _table.resize(10, nullptr);
+        }
     ~hashTable(){
         for(auto& e:_table){
             node* cur = e;
