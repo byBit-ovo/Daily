@@ -25,3 +25,22 @@ public:
         return root;
     }
 };
+
+class Solution2 {
+public:
+    Node* connect(Node* root) {
+        traverse(root);
+        return root;
+    }
+
+    void traverse(Node* root)
+    {
+        if(root==nullptr || root->left==nullptr) return;
+        root->left->next = root->right;
+        if(root->next){
+            root->right->next = root->next->left;
+        }
+        traverse(root->left);
+        traverse(root->right);
+    }
+};
