@@ -13,10 +13,10 @@ public:
         valToPos[val]=nums.size()-1;
     }
     void remove(int val){
-        if(valToPos.count(val)){
+        if(valToPos.count(val)==0){
             return;
         }
-        int index = valToPos(val);
+        int index = valToPos[val];
         nums[index]=nums.back();
         nums.pop_back();
         valToPos.erase(val);
