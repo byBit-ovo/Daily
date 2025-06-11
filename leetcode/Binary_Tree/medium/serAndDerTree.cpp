@@ -13,29 +13,42 @@ public:
     // Encodes a tree to a single string.
     string serialize(TreeNode* root) {
         if(root==nullptr){
-            return "n,";
+            return "N";
         }
-        string me = to_string(root->val) + _deli +
-        serialize(root->left)+ _deli+ serialize(root->right);
-        return me;
+        string res = to_string(root->val);
+        res+=_deli;
+        res += serialize(root->left);
+        res+=_deli;
+        res+=serialize(root->right);
+        return res;
+
     }
 
     // Decodes your encoded data to tree.
     TreeNode* deserialize(string& data) {
         if(data.empty()){
             return nullptr;
-        }else if(data[0]=='n'){
-            data.erase(data.begin(),data.begin()+1);
-            return nullptr;
         }
         int pos = data.find(_deli);
+        if(pos==string::npos){
+            if(data=="N"){
+                return nullptr;
+            }
+        }
         string valStr = data.substr(0,pos);
-        int val =stoi(valStr);
-        TreeNode* root = new TreeNode(val);
-        data.erase(data.begin(),data.begin()+pos);
+        if(valStr=="N"){
+            data.erase(data.begin());
+            if(!data.empty()){
+                data.erase(data.begin());
+            }
+            return nullptr;
+        }
+        TreeNode* root = new TreeNode(stoi(valStr));
+        data.erase(data.begin(),data.begin()+pos+1);
         root->left = deserialize(data);
         root->right = deserialize(data);
         return root;
+
     }
     string _deli = ",";
 };
