@@ -33,4 +33,4 @@
 
 # ohter
 *.vscode
-*.git
+*.gitignore
