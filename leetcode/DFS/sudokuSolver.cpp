@@ -1,4 +1,7 @@
-class Solution {
+#include <vector>
+using namespace std;
+class Solution
+{
 public:
     void solveSudoku(vector<vector<char>>& board) {
         for(int i=0;i<9;++i){
