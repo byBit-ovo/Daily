@@ -71,3 +71,15 @@ class Solution2 {
             return lans;
         }
     };
+
+#include <vector>
+#include <iostream>
+
+int main()
+{
+    Solution1 tool;
+    std::vector<int> nums ={2,3,1,6,4,7};
+    int res = tool.lengthOfLIS(nums);
+    std::cout<<res<<std::endl;
+    return 0;
+}
