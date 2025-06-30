@@ -18,3 +18,28 @@ public:
 };
 
 
+class Solution2 {
+public:
+    vector<vector<int>> cache;
+    int minPathSum(vector<vector<int>>& grid) {
+
+        int m = grid.size(),n=grid[0].size();
+        cache.resize(m,vector<int>(n,-1));
+        return dp(grid,m-1,n-1);
+    }
+
+    int dp(vector<vector<int>>& grid,int x,int y)
+    {
+        if(x<0 || y<0){
+            return INT_MAX;
+        }
+        if(x==0 && y==0){
+            return grid[0][0];
+        }
+        if(cache[x][y]!=-1){
+            return cache[x][y];
+        }
+        cache[x][y] = min(dp(grid,x-1,y),dp(grid,x,y-1)) + grid[x][y];
+        return cache[x][y];
+    }
+};
