@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 using namespace std;
 
 class Solution {
@@ -22,6 +23,22 @@ public:
                 }               
             }
         }
+        for(auto& v: dp)
+        {
+            for(int e: v)
+            {
+                std::cout<<e<<" ";
+            }
+            std::cout<<std::endl;
+        }
         return dp[len][amount];
     }
 };
+
+int main()
+{
+    Solution tool;
+    vector<int> coins = {2,5,7};
+    tool.change(38,coins);
+    return 0;
+}
