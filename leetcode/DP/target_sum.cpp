@@ -1,3 +1,11 @@
+#include <vector>
+#include <string>
+#include <iostream>
+#include <limits.h>
+#include <unordered_map>
+
+using namespace std;
+
 class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
@@ -45,4 +53,10 @@ public:
         cache[key] = res;
         return res;
     }
+    int a = INT_MAX;
 };
+int main()
+{
+    std::cout<<0x7fffffff<<std::endl;
+    return 0;
+}
