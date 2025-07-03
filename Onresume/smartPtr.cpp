@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <functional>
 namespace bybit
 {
     template<class T>
@@ -9,15 +9,24 @@ namespace bybit
         private:
         T* _ptr;
         int* _count;
+        std::function<void(T*)> _del =[](T* _ptr){
+            delete _ptr;
+        };
         public:
-        shared_ptr():_ptr(nullptr),_count(nullptr){}
-        shared_ptr(T* ptr):_ptr(ptr),_count(nullptr){
+        shared_ptr(T* ptr=nullptr):
+        _ptr(ptr),_count(nullptr){
+            if(_ptr!=nullptr){
+                _count = new int(1);
+            }
+        }
+        shared_ptr(T* ptr=nullptr,std::function<void(T*)> del):
+        _ptr(ptr),_count(nullptr),_del(del){
             if(_ptr!=nullptr){
                 _count = new int(1);
             }
         }
         shared_ptr(const shared_ptr<T>& other):
-        _ptr(other.get()),_count(other._count){
+        _ptr(other.get()),_count(other._count),_del(other._del){
             if(_count!=nullptr){
                 ++(*_count);
             }
@@ -31,7 +40,8 @@ namespace bybit
                 --(*_count);
                 if(*_count==0)
                 {
-                    delete _ptr;
+                    // delete _ptr;
+                    _del(_ptr);
                     delete _count;
                     _ptr = nullptr;
                     _count = nullptr;
