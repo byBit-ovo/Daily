@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 #include <functional>
 namespace bybit
@@ -94,6 +95,7 @@ class test{
     private:
     int _a;
 };
+
 int main()
 {
     bybit::shared_ptr<test> p1(new test(1));
