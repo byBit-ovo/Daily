@@ -1,4 +1,5 @@
 
+
 #include <iostream>
 
 namespace bybit
@@ -49,6 +50,7 @@ class test{
         std::cout<<"~test()"<<std::endl;
     }
 };
+
 int main()
 {
     bybit::shared_ptr<test> p1(new test());
