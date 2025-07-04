@@ -18,56 +18,77 @@ namespace bybit
             Node* _tail;
         public:
             List():_head(nullptr),_tail(nullptr){}
-            ~List(){
-                Node* cur = _head;
-                while(cur!=nullptr){
-                    Node* next = cur->_next;
-                    // delete cur;
-                    cur = next;
-                }
-            }
+            // ~List(){
+            //     Node* cur = _head;
+            //     while(cur!=nullptr){
+            //         Node* next = cur->_next;
+            //         delete cur;
+            //         cur = next;
+            //     }
+            // }
             bool empty(){
                 return _head==nullptr;
             }
-            void push_front(const T& val){
+            // void push_front(const T& val){
+            //     if(_head==nullptr){
+            //         _head = _tail = new Node(val);
+            //         return;
+            //     }
+            //     Node* newHead = new Node(val);
+            //     newHead->_next = _head;
+            //     _head->_prev = newHead;
+            //     _head = newHead;
+            // }
+            void push_front(Node* newNode){
                 if(_head==nullptr){
-                    _head = _tail = new Node(val);
+                    _head = _tail = newNode;
                     return;
                 }
-                Node* newHead = new Node(val);
-                newHead->_next = _head;
-                _head->_prev = newHead;
-                _head = newHead;
+                newNode->_next = _head;
+                _head->_prev = newNode;
+                _head = newNode;
             }
-            void push_back(const T& val){
+            // void push_back(const T& val){
+            //     if(_tail==nullptr){
+            //         _head = _tail = new Node(val);
+            //         return;
+            //     }
+            //     _tail->_next = new Node(val);
+            //     _tail->_next->_prev = _tail;
+            //     _tail = _tail->_next;
+            // }
+            void push_back(Node* newNode){
                 if(_tail==nullptr){
-                    _head = _tail = new Node(val);
+                    _head = _tail = newNode;
                     return;
                 }
-                _tail->_next = new Node(val);
-                _tail->_next->_prev = _tail;
+                _tail->_next = newNode;
+                newNode->_prev = _tail;
                 _tail = _tail->_next;
             }
-            void insert(Node* pos,const T& val){
-                if(pos==nullptr){
-                    return;
-                }
-                if(pos==_head){
-                    push_front(val);
-                    return;
-                }
-                Node* prev = pos->_prev;
-                Node* newNode = new Node(val);
-                prev->_next = newNode;
-                newNode->_next = pos;
-                newNode->_prev = prev;
-                pos->_prev = newNode;
+            Node* front(){
+                return _head;
             }
+            // void insert(Node* pos,const T& val){
+            //     if(pos==nullptr){
+            //         return;
+            //     }
+            //     if(pos==_head){
+            //         push_front(val);
+            //         return;
+            //     }
+            //     Node* prev = pos->_prev;
+            //     Node* newNode = new Node(val);
+            //     prev->_next = newNode;
+            //     newNode->_next = pos;
+            //     newNode->_prev = prev;
+            //     pos->_prev = newNode;
+            // }
             void pop_front(){
                 if(_head==nullptr){
                     return;
                 }
-                Node* del = _head;
+                // Node* del = _head;
                 _head=_head->_next;
                 if(_head!=nullptr){
                     _head->_prev = nullptr;
@@ -80,7 +101,7 @@ namespace bybit
                 if(_tail==nullptr){
                     return;
                 }
-                Node* del = _tail;
+                // Node* del = _tail;
                 _tail=_tail->_prev;
                 if(_tail != nullptr){
                     _tail->_next = nullptr;
@@ -120,48 +141,52 @@ namespace bybit
 
     class LRUCache {
         private:
+            using Node = List<std::pair<int,int>>::Node;
             int _capacity;
             List<std::pair<int,int>> _queue;
-            std::unordered_map<int,List<std::pair<int,int>>::Node*> map; 
-            using Node = List<std::pair<int,int>>::Node;
+            std::unordered_map<int,Node> map; 
         public:
         LRUCache(int capacity):_capacity(capacity){
         }
-    
+        
         int get(int key) {
-            
+            if(map.find(key) != map.end())
+            {
+                Node* refresh = &map[key];
+                _queue.erase(refresh);
+                _queue.push_back(refresh);
+                return refresh->_val.second;
+            }
+            return -1;
         }
         
         void put(int key, int value) {
             if(map.find(key)!=map.end()){
                 //存在则修改
-                Node* target = map[key];
-                _queue.erase(target);
-                target->_val.second = value;
-                _queue.push_back()
+                Node& target = map[key];
+                _queue.erase(&target);
+                target._val.second = value;
+                _queue.push_back(&target);
+                return;
             }
+            if(map.size()==_capacity){
+                Node* waste = _queue.front();
+                _queue.pop_front();
+                map.erase(waste->_val.first);
+            }
+            map.insert(std::make_pair(key,Node({key,value})));
+            _queue.push_back(&map[key]);
         }
     
     };
 }
 int main()
 {
-    bybit::List<int> ls;
-    for(int i=1;i<=3;++i){
-        ls.push_back(i);
-    }
-    for(int i=4;i<=7;++i){
-        ls.push_front(i);
-    }
-    //7 6 5 4 1 2 3
-    ls.show();  
-    // while(!ls.empty()){
-    //     ls.pop_back();
-    //     ls.show();
-    // }
-    while(!ls.empty()){
-        ls.pop_front();
-        ls.show();
-    }
+    bybit::LRUCache lru(3);
+    lru.put(1,2);
+    lru.put(3,4);
+    lru.put(4,5);
+    lru.put(5,6);
+    lru.put(1,2);
     return 0;
 }
