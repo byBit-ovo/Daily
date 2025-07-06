@@ -9,6 +9,7 @@ List* Buy_node(Datatype p)
 	}
 	newnode->data = p;
 	newnode->next = newnode->prev = newnode;
+	return newnode;
 }
 
 List* Init()
