@@ -1,9 +1,9 @@
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def traverse(self,str, root):
         if root is None: return
@@ -16,9 +16,18 @@ class Solution:
         self.traverse(str, root.left)
         self.traverse(str, root.right)
 
-    def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
+    def smallestFromLeaf(self, root: TreeNode) -> str:
         self.res = ""
         self.traverse("",root)
         return self.res
             
         
+# str = 'a  s  sjjdlsjf     jfsdlf;sdf '
+# ll= str.split(' ')
+# print(ll)
+# ll = [s for s in ll if s !='']
+# print(ll)
+
+str = 'hello'
+if 'ell' in str:
+    print('Yes')
