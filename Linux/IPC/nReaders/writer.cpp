@@ -3,7 +3,7 @@
 
 int main(){
     umask(0);
-    int ret = mkfifo(pName, 0666);
+    int ret = mkfifo(pName, 0666);   //8421
     if(ret==-1){
         std::cerr << "mkfifo error" << std::endl;
         return 1;

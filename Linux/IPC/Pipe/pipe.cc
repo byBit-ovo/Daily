@@ -16,7 +16,7 @@ int main()
         int cnt = 0;
         while (cnt < 11)
         {
-            std::string message = "\"this content fron child:\" ";
+            std::string message = "\"this content is from child:\" ";
             message += std::to_string(cnt++);
             message += '\n';
             ::write(pfd[1], message.c_str(), message.size());

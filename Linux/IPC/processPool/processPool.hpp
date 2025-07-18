@@ -13,9 +13,7 @@ bool checkArg(int argc)
 class Channel
 {
 public:
-    Channel(int id, int wfd) : _id(id),
-                               _wfd(wfd) {}
-    ~Channel() = default;
+    Channel(int id, int wfd): _id(id),_wfd(wfd) {}
     int getwfd()
     {
         return _wfd;

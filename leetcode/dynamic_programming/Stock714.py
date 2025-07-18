@@ -17,11 +17,7 @@ class Solution:
                 
             return cache[(i,buy)]
         return dp(0,True)
-
-dp = [[True]*2 for _ in range(5)]
-print(dp)
-class Solution:
-    def maxProfit(self, prices: List[int], fee: int) -> int:
+    def maxProfit(self, prices: list[int], fee: int) -> int:
         dp = [[0]*2 for _ in range(len(prices))]
         dp[0][0] = 0
         dp[0][1] = -prices[0]
@@ -31,6 +27,9 @@ class Solution:
             dp[i][0] = max(prices[i] - fee + dp[i-1][1], dp[i-1][0])
             dp[i][1] = max(-prices[i] + dp[i-1][0], dp[i-1][1])
         return dp[-1][0]
+
+
+
 
 
 

@@ -26,7 +26,7 @@ public:
             LOG(logLevel::INFO) << _threads[i]->getName() << "启动...";
             _threads[i]->start();
         }
-        // _isrunning = true; 不能放到这，因为前面的线程可能会提前退出线程池( isEmpty() && _isrunning == false)
+        // _isrunning = true; 不能放到这，因为前面的线程可能会提前退出线程池(isEmpty() && _isrunning == false)
 
     }
     void wait()
