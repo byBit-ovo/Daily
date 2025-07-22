@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include <assert.h>
 
 class Heap
@@ -39,7 +40,7 @@ class Heap
         }
         void Heapify()
         {
-            for(int i = _end- 1;i>=0;--i) sink(i);
+            for(int i = (_end- 1 - 1)/2;i>=0;--i) sink(i);
         }
     public:
         Heap(int n):_tree(n),_end(0){}
@@ -55,7 +56,7 @@ class Heap
         {
             if(_end >= _tree.size())
             {
-                _tree.resize(_tree.size() * 2);
+                _tree.resize(std::max(1,static_cast<int>(_tree.size() * 2)));
             }
             _tree[_end] = val;
             SiftUp(_end);
