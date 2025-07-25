@@ -1,5 +1,5 @@
 class Solution:
-    def maxProfit(self, k: int, prices: List[int]) -> int:
+    def maxProfit(self, k: int, prices: list[int]) -> int:
         cache = {}
         def dp(i, buy, k):
             if i >= len(prices) or k <= 0:
@@ -20,3 +20,9 @@ class Solution:
             cache[(i,buy,k)] = res
             return res
         return dp(0,True,k)
+    
+#arr[2][3][4]
+arr = [[ [0]*4 for _ in range(3)]  for _ in range(2)]
+print(arr[1][2][3])
+
+
