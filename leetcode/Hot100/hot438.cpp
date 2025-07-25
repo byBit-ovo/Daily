@@ -13,12 +13,13 @@ public:
         vector<int> res;
         for(int i=0,j=0;j<s.size();++j)
         {
-            if(++window[s[j]] == pCount[s[j]]){
+            ++window[s[j]];
+            if(pCount.count(s[j]) && window[s[j]] == pCount[s[j]]){
                 match+=1;
             }
             if(j - i + 1 > p.size()){
                 --window[s[i]];
-                if(window[s[i]] == pCount[s[i]] - 1){
+                if(pCount.count(s[i]) && window[s[i]] == pCount[s[i]] - 1){
                     --match;
                 }
                 ++i;
