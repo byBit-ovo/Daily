@@ -52,13 +52,15 @@ void replace(){
 
 int main()
 {
-    int fd = open("qzr.txt", O_RDWR | O_CREAT | O_APPEND,0666);
-    if(fd < 0){
-        std::cout<<"open error"<<std::endl;
-        return 1;
-    }
-    char buffer[] = "I love coding";
-    printf("%s\n", buffer);
-    close(fd);
+    // int fd = open("qzr.txt", O_RDWR | O_CREAT | O_APPEND,0666);
+    // if(fd < 0){
+    //     std::cout<<"open error"<<std::endl;
+    //     return 1;
+    // }
+    // char buffer[] = "I love coding";
+    // printf("%s\n", buffer);
+    // close(fd);
+    dup2(1,2);
+    fprintf(stderr,"%s\n","abs");
     return 0;
 }

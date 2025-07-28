@@ -1,6 +1,7 @@
 // Least Rencently used
 #include <iostream>
 #include <unordered_map>
+#include <queue>
 namespace bybit
 {
     template<class T>
@@ -180,7 +181,13 @@ namespace bybit
     
     };
 }
-int main()
+// void oo(int a){
+
+// }
+// void oo(const int &a){
+
+// }
+void test()
 {
     bybit::LRUCache lru(3);
     lru.put(1,2);
@@ -188,5 +195,27 @@ int main()
     lru.put(4,5);
     lru.put(5,6);
     lru.put(1,2);
+}
+int main()
+{
+    auto f = [](int a,int b){
+        return a > b;
+    };
+    struct cmp{
+        bool operator()(int a,int b){
+            return a>b;
+        }
+    };
+    // std::priority_queue<int,std::vector<int>,decltype(f)> heap(f);
+    std::priority_queue<int,std::vector<int>,cmp> heap;
+    heap.push(1);
+    heap.push(1);
+    heap.push(2);
+    std::cout<<heap.top()<<std::endl;
+    heap.pop();
+    std::cout<<heap.top()<<std::endl;
+    heap.pop();
+    std::cout<<heap.top()<<std::endl;
+    heap.pop();
     return 0;
 }

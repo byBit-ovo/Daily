@@ -2,6 +2,6 @@
 #include "add.hpp"
 int main()
 {
-    std::cout<<add(1,2)<<std::endl;
+    std::cout<<add(3,5)<<std::endl;
     return 0;
 }
