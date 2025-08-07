@@ -1,8 +1,6 @@
 #include <mysql/mysql.h>
 #include <iostream>
-
-int main()
-{
+int test(){
     MYSQL *conn = mysql_init(nullptr);
     if (!conn) {
         std::cerr << "mysql_init failed\n";
@@ -28,5 +26,20 @@ int main()
     // 清理资源
     mysql_free_result(result);
     mysql_close(conn);
+    return 0;
+}
+
+int main()
+{
+    struct bitmap{
+        char bit1 : 1;
+        char bit2 : 2;
+        char bit3 : 3;
+    };
+    struct bitmap map;
+    map.bit1 = 1;
+    map.bit2 = 4;
+    map.bit3 = 2;
+    std::cout<<sizeof(map)<<std::endl;
     return 0;
 }

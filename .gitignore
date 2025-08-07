@@ -32,5 +32,6 @@
 *.app
 
 # ohter
-*.vscode
+.vscode/
+
 *.gitignore
