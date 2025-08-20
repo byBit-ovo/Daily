@@ -66,7 +66,7 @@ bool Get_Command_Line(char* buffer){
     buffer[strlen(buffer)-1]='\0';
     return true;
 }
-void  check_dir(){
+void check_dir(){
     for(int i=0;i<gargc;++i){
         if(strcmp(gargv[i],">")==0){
             if(i+1<gargc){
@@ -147,7 +147,7 @@ void Add_Env(){
     genv[i]=nullptr;
 
 }
-//shell执行内建命令
+//shell执行内建命令,作用于当前进程（shell进程），所以不能fork子进程来执行
 bool Check_Built_Command(){
     if(strcmp(gargv[0],"cd")==0){
         if(gargc==2){
