@@ -14,3 +14,7 @@
 [2025-08-22 09:44:56] [INFO] [udpServer.hpp] [33] - bind success
 [2025-08-22 09:48:18] [FATAL] [udpServer.hpp] [25] - socket is 3
 [2025-08-22 09:48:18] [INFO] [udpServer.hpp] [33] - bind success
+[2025-08-22 09:57:21] [FATAL] [udpServer.hpp] [25] - socket is 3
+[2025-08-22 09:57:21] [INFO] [udpServer.hpp] [34] - bind success
+[2025-08-22 10:00:15] [FATAL] [udpServer.hpp] [25] - socket is 3
+[2025-08-22 10:00:15] [INFO] [udpServer.hpp] [34] - bind success

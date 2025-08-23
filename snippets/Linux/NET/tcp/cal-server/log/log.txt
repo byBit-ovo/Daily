@@ -161,3 +161,68 @@
 [2025-05-02 13:36:45] [INFO] [TcpServer.hpp] [116] - 5closed
 [2025-05-02 13:36:49] [WARNING] [TcpServer.hpp] [104] - 客户端已经退出...
 [2025-05-02 13:36:49] [INFO] [TcpServer.hpp] [116] - 4closed
+[2025-08-23 14:17:48] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:17:48] [INFO] [TcpServer.hpp] [34] - listen status set successfully
+[2025-08-23 14:17:51] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:17:51] [INFO] [TcpServer.hpp] [34] - listen status set successfully
+[2025-08-23 14:18:39] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:18:39] [ERROR] [TcpServer.hpp] [26] - bind error
+[2025-08-23 14:18:42] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:18:42] [ERROR] [TcpServer.hpp] [26] - bind error
+[2025-08-23 14:19:27] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:19:27] [INFO] [TcpServer.hpp] [34] - listen status set successfully
+[2025-08-23 14:19:34] [INFO] [TcpServer.hpp] [52] - 新客户端连接 : ip: 127.0.0.1 port: 44170
+[2025-08-23 14:19:34] [INFO] [TcpServer.hpp] [81] - Handler_Task,sockfd is 4
+[2025-08-23 14:20:03] [INFO] [TcpServer.hpp] [90] - server recv: 36
+{
+	"oper" : 43,
+	"x" : 3,
+	"y" : 4
+}
+
+[2025-08-23 14:20:03] [INFO] [TcpServer.hpp] [95] - server send: 30
+{
+	"code" : 0,
+	"result" : 7
+}
+
+[2025-08-23 14:20:27] [INFO] [TcpServer.hpp] [90] - server recv: 36
+{
+	"oper" : 43,
+	"x" : 3,
+	"y" : 3
+}
+
+[2025-08-23 14:20:27] [INFO] [TcpServer.hpp] [95] - server send: 30
+{
+	"code" : 0,
+	"result" : 6
+}
+
+[2025-08-23 14:20:40] [WARNING] [TcpServer.hpp] [104] - 客户端已经退出...
+[2025-08-23 14:20:40] [INFO] [TcpServer.hpp] [116] - 4closed
+[2025-08-23 14:22:58] [INFO] [TcpServer.hpp] [52] - 新客户端连接 : ip: 127.0.0.1 port: 59216
+[2025-08-23 14:22:58] [INFO] [TcpServer.hpp] [81] - Handler_Task,sockfd is 5
+[2025-08-23 14:23:10] [WARNING] [TcpServer.hpp] [104] - 客户端已经退出...
+[2025-08-23 14:23:10] [INFO] [TcpServer.hpp] [116] - 5closed
+[2025-08-23 14:31:49] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:31:49] [INFO] [TcpServer.hpp] [34] - listen status set successfully
+[2025-08-23 14:31:56] [INFO] [TcpServer.hpp] [52] - 新客户端连接 : ip: 127.0.0.1 port: 48022
+[2025-08-23 14:31:56] [INFO] [TcpServer.hpp] [81] - Handler_Task,sockfd is 4
+[2025-08-23 14:32:05] [INFO] [TcpServer.hpp] [90] - server recv: 36
+{
+	"oper" : 47,
+	"x" : 3,
+	"y" : 2
+}
+
+[2025-08-23 14:32:05] [INFO] [TcpServer.hpp] [95] - server send: 30
+{
+	"code" : 0,
+	"result" : 1
+}
+
+[2025-08-23 14:32:07] [WARNING] [TcpServer.hpp] [104] - 客户端已经退出...
+[2025-08-23 14:32:07] [INFO] [TcpServer.hpp] [116] - 4closed
+[2025-08-23 14:32:22] [INFO] [TcpServer.hpp] [22] - _listen_socket is 3
+[2025-08-23 14:32:22] [INFO] [TcpServer.hpp] [34] - listen status set successfully

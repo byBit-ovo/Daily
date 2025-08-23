@@ -6,7 +6,7 @@ uint16_t gport = 6060;
 int main(int args, char *arg[])
 {
     TOFILE();
-    ::Daemon(false, false);
+    // ::Daemon(false, false);
     if (args == 2)
     {
         gport = std::stoi(arg[1]);

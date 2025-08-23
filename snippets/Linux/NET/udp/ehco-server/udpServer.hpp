@@ -25,6 +25,7 @@ public:
         LOG(logLevel::FATAL) << "socket is " << _socket;
         int n = bind(_socket, &_addr, _addr.size());
         int n2 = bind(_socket2, &_addr, _addr.size());
+        std::cout<<_socket<<" "<<_socket2;
         if (n != 0 || n2 != 0)
         {
             LOG(logLevel::WARNING) << "Error : bind";
@@ -36,13 +37,14 @@ public:
     void start()
     {
         if(fork() >0){
+            close(_socket);
             while (true)
             {
                 struct sockaddr_in peer;
                 socklen_t len = sizeof(peer);
                 char buffer[1024];
                 int n = recvfrom(_socket2, buffer, 1023, 0, CONV(&peer), &len);
-                std::cout<<"This is child ,server socket: "<<_socket2<<std::endl;
+                std::cout<<" ,server socket: "<<_socket2<<std::endl;
                 if (n > 0)
                 {
                     netAddr clientInfo(peer);
@@ -53,13 +55,14 @@ public:
                 }
             }
         }
+        close(_socket2);
         while (true)
         {
             struct sockaddr_in peer;
             socklen_t len = sizeof(peer);
             char buffer[1024];
             int n = recvfrom(_socket, buffer, 1023, 0, CONV(&peer), &len);
-            std::cout<<"This is parent,server socket: "<<_socket<<std::endl;
+            std::cout<<",server socket: "<<_socket<<std::endl;
 
             if (n > 0)
             {
