@@ -1,6 +1,7 @@
 #include <pthread.h>
 #include <iostream>
 #include <unistd.h>
+#include <vector>
 // __thread int ga = 0;
 int ga = 0;
 std::string toHex(pthread_t tid){
@@ -29,16 +30,19 @@ void * routine2(void* arg){
     return nullptr;
 
 }
+void *threadEntry(void *arg){
 
+    // while(true){
+    //     sleep(1);
+    // }
+    int a = 1;
+    return (void*)&a;
+}
 int main(){
-    std::cout <<"main thread     "<< toHex(pthread_self()) << std::endl;
-    pthread_t tid1, tid2;
-    // pthread_create(&tid1, nullptr, routine1, nullptr);
-    // pthread_create(&tid2, nullptr, routine2, nullptr);
-    // std::cout << "tid1: " << toHex(tid1) << std::endl;
-    // std::cout <<"tid2: "<< toHex(tid2) << std::endl;
-    // pthread_join(tid1, nullptr);
-    // pthread_join(tid2, nullptr);
-    sleep(5);
+    pthread_t id;
+    int ret = pthread_create(&id,nullptr,threadEntry,nullptr);
+    void* arg;
+    pthread_join(id,&arg);
+    std::cout<<arg<<std::endl;
     return 0;
 }
