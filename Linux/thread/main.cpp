@@ -3,6 +3,7 @@
 #include "condition.hpp"
 #include "BlockQueue.hpp"
 #include <iostream>
+#include <thread>
 int tickets = 0;
 pthread_cond_t condition = PTHREAD_COND_INITIALIZER;
 void routine1(int a)
@@ -44,54 +45,48 @@ void task2(){
 void task3(){
     std::cout<<"消费者执行 Task3..."<<std::endl;
 }
+using Task_t = std::function<void()>;
 
-void produce(LockModule::Thread_Safe_Queue<std::function<void()>> *blockQueue)
+void produce(LockModule::Thread_Safe_Queue<Task_t> *blockQueue)
 {
     int i=0;
     while(true)
     {
         blockQueue->push(task1);
         std::cout<<"生产Task1"<<std::endl;
-        sleep(3);
+        // sleep(3);
         blockQueue->push(task2);
         std::cout<<"生产Task2"<<std::endl;
-        sleep(3);
+        // sleep(3);
         blockQueue->push(task3);
         std::cout<<"生产Task3"<<std::endl;
-        sleep(3);
+        // sleep(3);
+        std::cout<<blockQueue->size()<<std::endl;
     }
 }
-void consume(LockModule::Thread_Safe_Queue<std::function<void()>> *blockQueue)
+void consume(LockModule::Thread_Safe_Queue<Task_t> *blockQueue)
 {
 
     while(true)
     {
-        // sleep(3);
+        sleep(3);
         auto t = blockQueue->pop();
         t();
     }
 }
-using myThread = LockModule::Thread<LockModule::Thread_Safe_Queue<std::function<void()>> *>;
 int main()
 {
-
-    LockModule::Thread_Safe_Queue<std::function<void()>> blockQueue;
-    LockModule::Thread<LockModule::Thread_Safe_Queue<std::function<void()>> *> producer1(produce,&blockQueue);
-    LockModule::Thread<LockModule::Thread_Safe_Queue<std::function<void()>> *> producer2(produce,&blockQueue);
-    LockModule::Thread<LockModule::Thread_Safe_Queue<std::function<void()>> *> consumer1(consume,&blockQueue);
-    LockModule::Thread<LockModule::Thread_Safe_Queue<std::function<void()>> *> consumer2(consume,&blockQueue);
-    std::vector<myThread> threads;
-    for(int i=0;i<1;i++){
-        threads.emplace_back(consume,&blockQueue);
-        threads[i].start();
+    LockModule::Thread_Safe_Queue<Task_t> queue;
+    std::vector<std::thread> consumers;
+    std::vector<std::thread> produceres;
+    for(int i=0;i<10;++i)
+    {
+        consumers.emplace_back(consume,&queue);
     }
-
-    for(int i=1;i<2;i++){
-        threads.emplace_back(produce,&blockQueue);
-        threads[i].start();
+    for(int i=0;i<10;++i)
+    {
+        produceres.emplace_back(produce,&queue);
     }
-
-
     sleep(20000);
 
     // LockModule::Mutex mutex;
