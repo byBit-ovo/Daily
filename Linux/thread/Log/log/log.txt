@@ -1,6 +1,0 @@
-[2025-04-06 16:03:57] [WARNING] [test.cpp] [34] - what
-[2025-04-06 16:03:57] [DEBUG] [test.cpp] [35] - a
-[2025-04-06 16:03:57] [FATAL] [test.cpp] [36] - day!
-[2025-04-06 16:05:28] [WARNING]    [test.cpp] [34] - what
-[2025-04-06 16:05:28] [DEBUG]    [test.cpp] [35] - a
-[2025-04-06 16:05:28] [FATAL]    [test.cpp] [36] - day!
