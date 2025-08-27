@@ -46,12 +46,13 @@ public:
     FileLog(const std::string &file) : _file_name(file) {}
     virtual void flush(const std::string &message) override
     {
-        std::ofstream of(_file_name);
+        std::ofstream of(_file_name,std::ios::out | std::ios::app);
         if (of.is_open() == false)
         {
+            std::cout<<"打开文件错误"<<std::endl;
             return;
         }
-        of << message;
+        of << message<<std::endl;
         of.close();
     }
 

@@ -6,6 +6,7 @@ Logger logger;
 #define FLOG logger(LogLevel::FATAL,__FILE__,__LINE__)
 int main()
 {
+    logger.toFile("log/log.txt");
     DLOG<<"hello "<<1<<" "<<1.22;
     ILOG<<"hello "<<1<<" "<<1.22;
     ELOG<<"hello "<<1<<" "<<1.22;
