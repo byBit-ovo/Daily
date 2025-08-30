@@ -74,7 +74,24 @@ class Heap
         }
 };
 
+class Animal{
+    public:
+        virtual void speak(){
+            std::cout<<"基类"<<std::endl;
+        }
+    protected:
+        int _a;
+        int _b;
+};
 
+class Dog: public Animal{
+    public:
+        void dog(){
+
+        }
+    private:
+        int _c;
+};
 int main()
 {
     int a[10] = {3,0,1,5,7,4,9,0,2,6};
@@ -85,5 +102,7 @@ int main()
         heap.pop();
     }
     std::cout<<std::endl;
+    Animal *animal = new Dog;
+    delete animal;
     return 0;
 }
