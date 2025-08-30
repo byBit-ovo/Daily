@@ -3,10 +3,22 @@ syntax = "proto3";
 //命名空间
 package contact;
 //联系人Message
+
+message Phone
+{
+    string number = 1;
+}
 message PersonInfo
 {
     //1 代表name
     string name = 1;
     //2 代表年龄
     int32 age = 2;
+    //电话合集: 数组
+    repeated Phone phone_numbsers = 3;
+}
+
+message Contacts
+{
+    repeated PersonInfo contacts = 1; 
 }

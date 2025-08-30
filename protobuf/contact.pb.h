@@ -45,16 +45,177 @@ struct TableStruct_contact_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_contact_2eproto;
 namespace contact {
+class Contacts;
+struct ContactsDefaultTypeInternal;
+extern ContactsDefaultTypeInternal _Contacts_default_instance_;
 class PersonInfo;
 struct PersonInfoDefaultTypeInternal;
 extern PersonInfoDefaultTypeInternal _PersonInfo_default_instance_;
+class Phone;
+struct PhoneDefaultTypeInternal;
+extern PhoneDefaultTypeInternal _Phone_default_instance_;
 }  // namespace contact
 PROTOBUF_NAMESPACE_OPEN
+template<> ::contact::Contacts* Arena::CreateMaybeMessage<::contact::Contacts>(Arena*);
 template<> ::contact::PersonInfo* Arena::CreateMaybeMessage<::contact::PersonInfo>(Arena*);
+template<> ::contact::Phone* Arena::CreateMaybeMessage<::contact::Phone>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace contact {
 
 // ===================================================================
+
+class Phone final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:contact.Phone) */ {
+ public:
+  inline Phone() : Phone(nullptr) {}
+  ~Phone() override;
+  explicit PROTOBUF_CONSTEXPR Phone(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Phone(const Phone& from);
+  Phone(Phone&& from) noexcept
+    : Phone() {
+    *this = ::std::move(from);
+  }
+
+  inline Phone& operator=(const Phone& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Phone& operator=(Phone&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Phone& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Phone* internal_default_instance() {
+    return reinterpret_cast<const Phone*>(
+               &_Phone_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(Phone& a, Phone& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Phone* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Phone* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Phone* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Phone>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Phone& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Phone& from) {
+    Phone::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Phone* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "contact.Phone";
+  }
+  protected:
+  explicit Phone(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNumberFieldNumber = 1,
+  };
+  // string number = 1;
+  void clear_number();
+  const std::string& number() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_number(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_number();
+  PROTOBUF_NODISCARD std::string* release_number();
+  void set_allocated_number(std::string* number);
+  private:
+  const std::string& _internal_number() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_number(const std::string& value);
+  std::string* _internal_mutable_number();
+  public:
+
+  // @@protoc_insertion_point(class_scope:contact.Phone)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr number_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_contact_2eproto;
+};
+// -------------------------------------------------------------------
 
 class PersonInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:contact.PersonInfo) */ {
@@ -104,7 +265,7 @@ class PersonInfo final :
                &_PersonInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(PersonInfo& a, PersonInfo& b) {
     a.Swap(&b);
@@ -177,9 +338,28 @@ class PersonInfo final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kPhoneNumbsersFieldNumber = 3,
     kNameFieldNumber = 1,
     kAgeFieldNumber = 2,
   };
+  // repeated .contact.Phone phone_numbsers = 3;
+  int phone_numbsers_size() const;
+  private:
+  int _internal_phone_numbsers_size() const;
+  public:
+  void clear_phone_numbsers();
+  ::contact::Phone* mutable_phone_numbsers(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone >*
+      mutable_phone_numbsers();
+  private:
+  const ::contact::Phone& _internal_phone_numbsers(int index) const;
+  ::contact::Phone* _internal_add_phone_numbsers();
+  public:
+  const ::contact::Phone& phone_numbsers(int index) const;
+  ::contact::Phone* add_phone_numbsers();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone >&
+      phone_numbsers() const;
+
   // string name = 1;
   void clear_name();
   const std::string& name() const;
@@ -211,8 +391,166 @@ class PersonInfo final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone > phone_numbsers_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
     int32_t age_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_contact_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Contacts final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:contact.Contacts) */ {
+ public:
+  inline Contacts() : Contacts(nullptr) {}
+  ~Contacts() override;
+  explicit PROTOBUF_CONSTEXPR Contacts(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Contacts(const Contacts& from);
+  Contacts(Contacts&& from) noexcept
+    : Contacts() {
+    *this = ::std::move(from);
+  }
+
+  inline Contacts& operator=(const Contacts& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Contacts& operator=(Contacts&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Contacts& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Contacts* internal_default_instance() {
+    return reinterpret_cast<const Contacts*>(
+               &_Contacts_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Contacts& a, Contacts& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Contacts* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Contacts* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Contacts* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Contacts>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Contacts& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Contacts& from) {
+    Contacts::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Contacts* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "contact.Contacts";
+  }
+  protected:
+  explicit Contacts(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kContactsFieldNumber = 1,
+  };
+  // repeated .contact.PersonInfo contacts = 1;
+  int contacts_size() const;
+  private:
+  int _internal_contacts_size() const;
+  public:
+  void clear_contacts();
+  ::contact::PersonInfo* mutable_contacts(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::PersonInfo >*
+      mutable_contacts();
+  private:
+  const ::contact::PersonInfo& _internal_contacts(int index) const;
+  ::contact::PersonInfo* _internal_add_contacts();
+  public:
+  const ::contact::PersonInfo& contacts(int index) const;
+  ::contact::PersonInfo* add_contacts();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::PersonInfo >&
+      contacts() const;
+
+  // @@protoc_insertion_point(class_scope:contact.Contacts)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::PersonInfo > contacts_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -227,6 +565,60 @@ class PersonInfo final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// Phone
+
+// string number = 1;
+inline void Phone::clear_number() {
+  _impl_.number_.ClearToEmpty();
+}
+inline const std::string& Phone::number() const {
+  // @@protoc_insertion_point(field_get:contact.Phone.number)
+  return _internal_number();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Phone::set_number(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.number_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:contact.Phone.number)
+}
+inline std::string* Phone::mutable_number() {
+  std::string* _s = _internal_mutable_number();
+  // @@protoc_insertion_point(field_mutable:contact.Phone.number)
+  return _s;
+}
+inline const std::string& Phone::_internal_number() const {
+  return _impl_.number_.Get();
+}
+inline void Phone::_internal_set_number(const std::string& value) {
+  
+  _impl_.number_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Phone::_internal_mutable_number() {
+  
+  return _impl_.number_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Phone::release_number() {
+  // @@protoc_insertion_point(field_release:contact.Phone.number)
+  return _impl_.number_.Release();
+}
+inline void Phone::set_allocated_number(std::string* number) {
+  if (number != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.number_.SetAllocated(number, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.number_.IsDefault()) {
+    _impl_.number_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:contact.Phone.number)
+}
+
+// -------------------------------------------------------------------
+
 // PersonInfo
 
 // string name = 1;
@@ -299,9 +691,97 @@ inline void PersonInfo::set_age(int32_t value) {
   // @@protoc_insertion_point(field_set:contact.PersonInfo.age)
 }
 
+// repeated .contact.Phone phone_numbsers = 3;
+inline int PersonInfo::_internal_phone_numbsers_size() const {
+  return _impl_.phone_numbsers_.size();
+}
+inline int PersonInfo::phone_numbsers_size() const {
+  return _internal_phone_numbsers_size();
+}
+inline void PersonInfo::clear_phone_numbsers() {
+  _impl_.phone_numbsers_.Clear();
+}
+inline ::contact::Phone* PersonInfo::mutable_phone_numbsers(int index) {
+  // @@protoc_insertion_point(field_mutable:contact.PersonInfo.phone_numbsers)
+  return _impl_.phone_numbsers_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone >*
+PersonInfo::mutable_phone_numbsers() {
+  // @@protoc_insertion_point(field_mutable_list:contact.PersonInfo.phone_numbsers)
+  return &_impl_.phone_numbsers_;
+}
+inline const ::contact::Phone& PersonInfo::_internal_phone_numbsers(int index) const {
+  return _impl_.phone_numbsers_.Get(index);
+}
+inline const ::contact::Phone& PersonInfo::phone_numbsers(int index) const {
+  // @@protoc_insertion_point(field_get:contact.PersonInfo.phone_numbsers)
+  return _internal_phone_numbsers(index);
+}
+inline ::contact::Phone* PersonInfo::_internal_add_phone_numbsers() {
+  return _impl_.phone_numbsers_.Add();
+}
+inline ::contact::Phone* PersonInfo::add_phone_numbsers() {
+  ::contact::Phone* _add = _internal_add_phone_numbsers();
+  // @@protoc_insertion_point(field_add:contact.PersonInfo.phone_numbsers)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone >&
+PersonInfo::phone_numbsers() const {
+  // @@protoc_insertion_point(field_list:contact.PersonInfo.phone_numbsers)
+  return _impl_.phone_numbsers_;
+}
+
+// -------------------------------------------------------------------
+
+// Contacts
+
+// repeated .contact.PersonInfo contacts = 1;
+inline int Contacts::_internal_contacts_size() const {
+  return _impl_.contacts_.size();
+}
+inline int Contacts::contacts_size() const {
+  return _internal_contacts_size();
+}
+inline void Contacts::clear_contacts() {
+  _impl_.contacts_.Clear();
+}
+inline ::contact::PersonInfo* Contacts::mutable_contacts(int index) {
+  // @@protoc_insertion_point(field_mutable:contact.Contacts.contacts)
+  return _impl_.contacts_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::PersonInfo >*
+Contacts::mutable_contacts() {
+  // @@protoc_insertion_point(field_mutable_list:contact.Contacts.contacts)
+  return &_impl_.contacts_;
+}
+inline const ::contact::PersonInfo& Contacts::_internal_contacts(int index) const {
+  return _impl_.contacts_.Get(index);
+}
+inline const ::contact::PersonInfo& Contacts::contacts(int index) const {
+  // @@protoc_insertion_point(field_get:contact.Contacts.contacts)
+  return _internal_contacts(index);
+}
+inline ::contact::PersonInfo* Contacts::_internal_add_contacts() {
+  return _impl_.contacts_.Add();
+}
+inline ::contact::PersonInfo* Contacts::add_contacts() {
+  ::contact::PersonInfo* _add = _internal_add_contacts();
+  // @@protoc_insertion_point(field_add:contact.Contacts.contacts)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::PersonInfo >&
+Contacts::contacts() const {
+  // @@protoc_insertion_point(field_list:contact.Contacts.contacts)
+  return _impl_.contacts_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
