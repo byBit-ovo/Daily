@@ -1,6 +1,8 @@
-main:main.cc contact.pb.cc
-    g++ $^ -o $@ -std=c++11 -lprotobuf
-
-.PHONY:clean
+.PHONY:clean all
+all:read write
+read:read.cc contact.pb.cc
+	g++ $^ -o $@ -std=c++11 -lprotobuf 
+write:write.cc contact.pb.cc
+	g++ $^ -o $@ -std=c++11 -lprotobuf 
 clean:
-    rm main
+	rm read write

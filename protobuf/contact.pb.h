@@ -29,6 +29,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -62,6 +63,31 @@ template<> ::contact::Phone* Arena::CreateMaybeMessage<::contact::Phone>(Arena*)
 PROTOBUF_NAMESPACE_CLOSE
 namespace contact {
 
+enum Phone_PhoneType : int {
+  Phone_PhoneType_Mobile_Phone = 0,
+  Phone_PhoneType_TELEPHONE = 1,
+  Phone_PhoneType_Phone_PhoneType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  Phone_PhoneType_Phone_PhoneType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+};
+bool Phone_PhoneType_IsValid(int value);
+constexpr Phone_PhoneType Phone_PhoneType_PhoneType_MIN = Phone_PhoneType_Mobile_Phone;
+constexpr Phone_PhoneType Phone_PhoneType_PhoneType_MAX = Phone_PhoneType_TELEPHONE;
+constexpr int Phone_PhoneType_PhoneType_ARRAYSIZE = Phone_PhoneType_PhoneType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Phone_PhoneType_descriptor();
+template<typename T>
+inline const std::string& Phone_PhoneType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, Phone_PhoneType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function Phone_PhoneType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    Phone_PhoneType_descriptor(), enum_t_value);
+}
+inline bool Phone_PhoneType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Phone_PhoneType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Phone_PhoneType>(
+    Phone_PhoneType_descriptor(), name, value);
+}
 // ===================================================================
 
 class Phone final :
@@ -182,10 +208,41 @@ class Phone final :
 
   // nested types ----------------------------------------------------
 
+  typedef Phone_PhoneType PhoneType;
+  static constexpr PhoneType Mobile_Phone =
+    Phone_PhoneType_Mobile_Phone;
+  static constexpr PhoneType TELEPHONE =
+    Phone_PhoneType_TELEPHONE;
+  static inline bool PhoneType_IsValid(int value) {
+    return Phone_PhoneType_IsValid(value);
+  }
+  static constexpr PhoneType PhoneType_MIN =
+    Phone_PhoneType_PhoneType_MIN;
+  static constexpr PhoneType PhoneType_MAX =
+    Phone_PhoneType_PhoneType_MAX;
+  static constexpr int PhoneType_ARRAYSIZE =
+    Phone_PhoneType_PhoneType_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  PhoneType_descriptor() {
+    return Phone_PhoneType_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& PhoneType_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, PhoneType>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function PhoneType_Name.");
+    return Phone_PhoneType_Name(enum_t_value);
+  }
+  static inline bool PhoneType_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      PhoneType* value) {
+    return Phone_PhoneType_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kNumberFieldNumber = 1,
+    kTypeFieldNumber = 2,
   };
   // string number = 1;
   void clear_number();
@@ -201,6 +258,15 @@ class Phone final :
   std::string* _internal_mutable_number();
   public:
 
+  // .contact.Phone.PhoneType type = 2;
+  void clear_type();
+  ::contact::Phone_PhoneType type() const;
+  void set_type(::contact::Phone_PhoneType value);
+  private:
+  ::contact::Phone_PhoneType _internal_type() const;
+  void _internal_set_type(::contact::Phone_PhoneType value);
+  public:
+
   // @@protoc_insertion_point(class_scope:contact.Phone)
  private:
   class _Internal;
@@ -210,6 +276,7 @@ class Phone final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr number_;
+    int type_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -617,6 +684,26 @@ inline void Phone::set_allocated_number(std::string* number) {
   // @@protoc_insertion_point(field_set_allocated:contact.Phone.number)
 }
 
+// .contact.Phone.PhoneType type = 2;
+inline void Phone::clear_type() {
+  _impl_.type_ = 0;
+}
+inline ::contact::Phone_PhoneType Phone::_internal_type() const {
+  return static_cast< ::contact::Phone_PhoneType >(_impl_.type_);
+}
+inline ::contact::Phone_PhoneType Phone::type() const {
+  // @@protoc_insertion_point(field_get:contact.Phone.type)
+  return _internal_type();
+}
+inline void Phone::_internal_set_type(::contact::Phone_PhoneType value) {
+  
+  _impl_.type_ = value;
+}
+inline void Phone::set_type(::contact::Phone_PhoneType value) {
+  _internal_set_type(value);
+  // @@protoc_insertion_point(field_set:contact.Phone.type)
+}
+
 // -------------------------------------------------------------------
 
 // PersonInfo
@@ -786,6 +873,16 @@ Contacts::contacts() const {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace contact
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::contact::Phone_PhoneType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::contact::Phone_PhoneType>() {
+  return ::contact::Phone_PhoneType_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 
