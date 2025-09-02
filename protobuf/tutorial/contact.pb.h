@@ -29,8 +29,12 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/any.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_contact_2eproto
@@ -46,19 +50,27 @@ struct TableStruct_contact_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_contact_2eproto;
 namespace contact {
+class Address;
+struct AddressDefaultTypeInternal;
+extern AddressDefaultTypeInternal _Address_default_instance_;
 class Contacts;
 struct ContactsDefaultTypeInternal;
 extern ContactsDefaultTypeInternal _Contacts_default_instance_;
 class PersonInfo;
 struct PersonInfoDefaultTypeInternal;
 extern PersonInfoDefaultTypeInternal _PersonInfo_default_instance_;
+class PersonInfo_RemarkEntry_DoNotUse;
+struct PersonInfo_RemarkEntry_DoNotUseDefaultTypeInternal;
+extern PersonInfo_RemarkEntry_DoNotUseDefaultTypeInternal _PersonInfo_RemarkEntry_DoNotUse_default_instance_;
 class Phone;
 struct PhoneDefaultTypeInternal;
 extern PhoneDefaultTypeInternal _Phone_default_instance_;
 }  // namespace contact
 PROTOBUF_NAMESPACE_OPEN
+template<> ::contact::Address* Arena::CreateMaybeMessage<::contact::Address>(Arena*);
 template<> ::contact::Contacts* Arena::CreateMaybeMessage<::contact::Contacts>(Arena*);
 template<> ::contact::PersonInfo* Arena::CreateMaybeMessage<::contact::PersonInfo>(Arena*);
+template<> ::contact::PersonInfo_RemarkEntry_DoNotUse* Arena::CreateMaybeMessage<::contact::PersonInfo_RemarkEntry_DoNotUse>(Arena*);
 template<> ::contact::Phone* Arena::CreateMaybeMessage<::contact::Phone>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace contact {
@@ -284,6 +296,203 @@ class Phone final :
 };
 // -------------------------------------------------------------------
 
+class Address final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:contact.Address) */ {
+ public:
+  inline Address() : Address(nullptr) {}
+  ~Address() override;
+  explicit PROTOBUF_CONSTEXPR Address(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Address(const Address& from);
+  Address(Address&& from) noexcept
+    : Address() {
+    *this = ::std::move(from);
+  }
+
+  inline Address& operator=(const Address& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Address& operator=(Address&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Address& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Address* internal_default_instance() {
+    return reinterpret_cast<const Address*>(
+               &_Address_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(Address& a, Address& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Address* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Address* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Address* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Address>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Address& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Address& from) {
+    Address::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Address* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "contact.Address";
+  }
+  protected:
+  explicit Address(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kHomeAddressFieldNumber = 1,
+    kUnitAddressFieldNumber = 2,
+  };
+  // string home_address = 1;
+  void clear_home_address();
+  const std::string& home_address() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_home_address(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_home_address();
+  PROTOBUF_NODISCARD std::string* release_home_address();
+  void set_allocated_home_address(std::string* home_address);
+  private:
+  const std::string& _internal_home_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_home_address(const std::string& value);
+  std::string* _internal_mutable_home_address();
+  public:
+
+  // string unit_address = 2;
+  void clear_unit_address();
+  const std::string& unit_address() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_unit_address(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_unit_address();
+  PROTOBUF_NODISCARD std::string* release_unit_address();
+  void set_allocated_unit_address(std::string* unit_address);
+  private:
+  const std::string& _internal_unit_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_unit_address(const std::string& value);
+  std::string* _internal_mutable_unit_address();
+  public:
+
+  // @@protoc_insertion_point(class_scope:contact.Address)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr home_address_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr unit_address_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_contact_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PersonInfo_RemarkEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PersonInfo_RemarkEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PersonInfo_RemarkEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  PersonInfo_RemarkEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR PersonInfo_RemarkEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PersonInfo_RemarkEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PersonInfo_RemarkEntry_DoNotUse& other);
+  static const PersonInfo_RemarkEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PersonInfo_RemarkEntry_DoNotUse*>(&_PersonInfo_RemarkEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "contact.PersonInfo.RemarkEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "contact.PersonInfo.RemarkEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_contact_2eproto;
+};
+
+// -------------------------------------------------------------------
+
 class PersonInfo final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:contact.PersonInfo) */ {
  public:
@@ -327,12 +536,18 @@ class PersonInfo final :
   static const PersonInfo& default_instance() {
     return *internal_default_instance();
   }
+  enum ChatWayCase {
+    kQq = 5,
+    kWechat = 6,
+    CHAT_WAY_NOT_SET = 0,
+  };
+
   static inline const PersonInfo* internal_default_instance() {
     return reinterpret_cast<const PersonInfo*>(
                &_PersonInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(PersonInfo& a, PersonInfo& b) {
     a.Swap(&b);
@@ -393,6 +608,8 @@ class PersonInfo final :
   protected:
   explicit PersonInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
   public:
 
   static const ClassData _class_data_;
@@ -402,12 +619,17 @@ class PersonInfo final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kPhoneNumbsersFieldNumber = 3,
+    kRemarkFieldNumber = 7,
     kNameFieldNumber = 1,
+    kDataFieldNumber = 4,
     kAgeFieldNumber = 2,
+    kQqFieldNumber = 5,
+    kWechatFieldNumber = 6,
   };
   // repeated .contact.Phone phone_numbsers = 3;
   int phone_numbsers_size() const;
@@ -427,6 +649,23 @@ class PersonInfo final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone >&
       phone_numbsers() const;
 
+  // map<string, string> remark = 7;
+  int remark_size() const;
+  private:
+  int _internal_remark_size() const;
+  public:
+  void clear_remark();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_remark() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_remark();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      remark() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_remark();
+
   // string name = 1;
   void clear_name();
   const std::string& name() const;
@@ -441,6 +680,24 @@ class PersonInfo final :
   std::string* _internal_mutable_name();
   public:
 
+  // .google.protobuf.Any data = 4;
+  bool has_data() const;
+  private:
+  bool _internal_has_data() const;
+  public:
+  void clear_data();
+  const ::PROTOBUF_NAMESPACE_ID::Any& data() const;
+  PROTOBUF_NODISCARD ::PROTOBUF_NAMESPACE_ID::Any* release_data();
+  ::PROTOBUF_NAMESPACE_ID::Any* mutable_data();
+  void set_allocated_data(::PROTOBUF_NAMESPACE_ID::Any* data);
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Any& _internal_data() const;
+  ::PROTOBUF_NAMESPACE_ID::Any* _internal_mutable_data();
+  public:
+  void unsafe_arena_set_allocated_data(
+      ::PROTOBUF_NAMESPACE_ID::Any* data);
+  ::PROTOBUF_NAMESPACE_ID::Any* unsafe_arena_release_data();
+
   // int32 age = 2;
   void clear_age();
   int32_t age() const;
@@ -450,18 +707,75 @@ class PersonInfo final :
   void _internal_set_age(int32_t value);
   public:
 
+  // string qq = 5;
+  bool has_qq() const;
+  private:
+  bool _internal_has_qq() const;
+  public:
+  void clear_qq();
+  const std::string& qq() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_qq(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_qq();
+  PROTOBUF_NODISCARD std::string* release_qq();
+  void set_allocated_qq(std::string* qq);
+  private:
+  const std::string& _internal_qq() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_qq(const std::string& value);
+  std::string* _internal_mutable_qq();
+  public:
+
+  // string wechat = 6;
+  bool has_wechat() const;
+  private:
+  bool _internal_has_wechat() const;
+  public:
+  void clear_wechat();
+  const std::string& wechat() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_wechat(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_wechat();
+  PROTOBUF_NODISCARD std::string* release_wechat();
+  void set_allocated_wechat(std::string* wechat);
+  private:
+  const std::string& _internal_wechat() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_wechat(const std::string& value);
+  std::string* _internal_mutable_wechat();
+  public:
+
+  void clear_chat_way();
+  ChatWayCase chat_way_case() const;
   // @@protoc_insertion_point(class_scope:contact.PersonInfo)
  private:
   class _Internal;
+  void set_has_qq();
+  void set_has_wechat();
+
+  inline bool has_chat_way() const;
+  inline void clear_has_chat_way();
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::contact::Phone > phone_numbsers_;
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        PersonInfo_RemarkEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> remark_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    ::PROTOBUF_NAMESPACE_ID::Any* data_;
     int32_t age_;
+    union ChatWayUnion {
+      constexpr ChatWayUnion() : _constinit_{} {}
+        ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr qq_;
+      ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr wechat_;
+    } chat_way_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    uint32_t _oneof_case_[1];
+
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_contact_2eproto;
@@ -516,7 +830,7 @@ class Contacts final :
                &_Contacts_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(Contacts& a, Contacts& b) {
     a.Swap(&b);
@@ -706,6 +1020,112 @@ inline void Phone::set_type(::contact::Phone_PhoneType value) {
 
 // -------------------------------------------------------------------
 
+// Address
+
+// string home_address = 1;
+inline void Address::clear_home_address() {
+  _impl_.home_address_.ClearToEmpty();
+}
+inline const std::string& Address::home_address() const {
+  // @@protoc_insertion_point(field_get:contact.Address.home_address)
+  return _internal_home_address();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Address::set_home_address(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.home_address_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:contact.Address.home_address)
+}
+inline std::string* Address::mutable_home_address() {
+  std::string* _s = _internal_mutable_home_address();
+  // @@protoc_insertion_point(field_mutable:contact.Address.home_address)
+  return _s;
+}
+inline const std::string& Address::_internal_home_address() const {
+  return _impl_.home_address_.Get();
+}
+inline void Address::_internal_set_home_address(const std::string& value) {
+  
+  _impl_.home_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Address::_internal_mutable_home_address() {
+  
+  return _impl_.home_address_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Address::release_home_address() {
+  // @@protoc_insertion_point(field_release:contact.Address.home_address)
+  return _impl_.home_address_.Release();
+}
+inline void Address::set_allocated_home_address(std::string* home_address) {
+  if (home_address != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.home_address_.SetAllocated(home_address, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.home_address_.IsDefault()) {
+    _impl_.home_address_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:contact.Address.home_address)
+}
+
+// string unit_address = 2;
+inline void Address::clear_unit_address() {
+  _impl_.unit_address_.ClearToEmpty();
+}
+inline const std::string& Address::unit_address() const {
+  // @@protoc_insertion_point(field_get:contact.Address.unit_address)
+  return _internal_unit_address();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Address::set_unit_address(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.unit_address_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:contact.Address.unit_address)
+}
+inline std::string* Address::mutable_unit_address() {
+  std::string* _s = _internal_mutable_unit_address();
+  // @@protoc_insertion_point(field_mutable:contact.Address.unit_address)
+  return _s;
+}
+inline const std::string& Address::_internal_unit_address() const {
+  return _impl_.unit_address_.Get();
+}
+inline void Address::_internal_set_unit_address(const std::string& value) {
+  
+  _impl_.unit_address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Address::_internal_mutable_unit_address() {
+  
+  return _impl_.unit_address_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Address::release_unit_address() {
+  // @@protoc_insertion_point(field_release:contact.Address.unit_address)
+  return _impl_.unit_address_.Release();
+}
+inline void Address::set_allocated_unit_address(std::string* unit_address) {
+  if (unit_address != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.unit_address_.SetAllocated(unit_address, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.unit_address_.IsDefault()) {
+    _impl_.unit_address_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:contact.Address.unit_address)
+}
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // PersonInfo
 
 // string name = 1;
@@ -818,6 +1238,283 @@ PersonInfo::phone_numbsers() const {
   return _impl_.phone_numbsers_;
 }
 
+// .google.protobuf.Any data = 4;
+inline bool PersonInfo::_internal_has_data() const {
+  return this != internal_default_instance() && _impl_.data_ != nullptr;
+}
+inline bool PersonInfo::has_data() const {
+  return _internal_has_data();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Any& PersonInfo::_internal_data() const {
+  const ::PROTOBUF_NAMESPACE_ID::Any* p = _impl_.data_;
+  return p != nullptr ? *p : reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Any&>(
+      ::PROTOBUF_NAMESPACE_ID::_Any_default_instance_);
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Any& PersonInfo::data() const {
+  // @@protoc_insertion_point(field_get:contact.PersonInfo.data)
+  return _internal_data();
+}
+inline void PersonInfo::unsafe_arena_set_allocated_data(
+    ::PROTOBUF_NAMESPACE_ID::Any* data) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.data_);
+  }
+  _impl_.data_ = data;
+  if (data) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:contact.PersonInfo.data)
+}
+inline ::PROTOBUF_NAMESPACE_ID::Any* PersonInfo::release_data() {
+  
+  ::PROTOBUF_NAMESPACE_ID::Any* temp = _impl_.data_;
+  _impl_.data_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Any* PersonInfo::unsafe_arena_release_data() {
+  // @@protoc_insertion_point(field_release:contact.PersonInfo.data)
+  
+  ::PROTOBUF_NAMESPACE_ID::Any* temp = _impl_.data_;
+  _impl_.data_ = nullptr;
+  return temp;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Any* PersonInfo::_internal_mutable_data() {
+  
+  if (_impl_.data_ == nullptr) {
+    auto* p = CreateMaybeMessage<::PROTOBUF_NAMESPACE_ID::Any>(GetArenaForAllocation());
+    _impl_.data_ = p;
+  }
+  return _impl_.data_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::Any* PersonInfo::mutable_data() {
+  ::PROTOBUF_NAMESPACE_ID::Any* _msg = _internal_mutable_data();
+  // @@protoc_insertion_point(field_mutable:contact.PersonInfo.data)
+  return _msg;
+}
+inline void PersonInfo::set_allocated_data(::PROTOBUF_NAMESPACE_ID::Any* data) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.data_);
+  }
+  if (data) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(data));
+    if (message_arena != submessage_arena) {
+      data = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, data, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.data_ = data;
+  // @@protoc_insertion_point(field_set_allocated:contact.PersonInfo.data)
+}
+
+// string qq = 5;
+inline bool PersonInfo::_internal_has_qq() const {
+  return chat_way_case() == kQq;
+}
+inline bool PersonInfo::has_qq() const {
+  return _internal_has_qq();
+}
+inline void PersonInfo::set_has_qq() {
+  _impl_._oneof_case_[0] = kQq;
+}
+inline void PersonInfo::clear_qq() {
+  if (_internal_has_qq()) {
+    _impl_.chat_way_.qq_.Destroy();
+    clear_has_chat_way();
+  }
+}
+inline const std::string& PersonInfo::qq() const {
+  // @@protoc_insertion_point(field_get:contact.PersonInfo.qq)
+  return _internal_qq();
+}
+template <typename ArgT0, typename... ArgT>
+inline void PersonInfo::set_qq(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_qq()) {
+    clear_chat_way();
+    set_has_qq();
+    _impl_.chat_way_.qq_.InitDefault();
+  }
+  _impl_.chat_way_.qq_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:contact.PersonInfo.qq)
+}
+inline std::string* PersonInfo::mutable_qq() {
+  std::string* _s = _internal_mutable_qq();
+  // @@protoc_insertion_point(field_mutable:contact.PersonInfo.qq)
+  return _s;
+}
+inline const std::string& PersonInfo::_internal_qq() const {
+  if (_internal_has_qq()) {
+    return _impl_.chat_way_.qq_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void PersonInfo::_internal_set_qq(const std::string& value) {
+  if (!_internal_has_qq()) {
+    clear_chat_way();
+    set_has_qq();
+    _impl_.chat_way_.qq_.InitDefault();
+  }
+  _impl_.chat_way_.qq_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PersonInfo::_internal_mutable_qq() {
+  if (!_internal_has_qq()) {
+    clear_chat_way();
+    set_has_qq();
+    _impl_.chat_way_.qq_.InitDefault();
+  }
+  return _impl_.chat_way_.qq_.Mutable(      GetArenaForAllocation());
+}
+inline std::string* PersonInfo::release_qq() {
+  // @@protoc_insertion_point(field_release:contact.PersonInfo.qq)
+  if (_internal_has_qq()) {
+    clear_has_chat_way();
+    return _impl_.chat_way_.qq_.Release();
+  } else {
+    return nullptr;
+  }
+}
+inline void PersonInfo::set_allocated_qq(std::string* qq) {
+  if (has_chat_way()) {
+    clear_chat_way();
+  }
+  if (qq != nullptr) {
+    set_has_qq();
+    _impl_.chat_way_.qq_.InitAllocated(qq, GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(field_set_allocated:contact.PersonInfo.qq)
+}
+
+// string wechat = 6;
+inline bool PersonInfo::_internal_has_wechat() const {
+  return chat_way_case() == kWechat;
+}
+inline bool PersonInfo::has_wechat() const {
+  return _internal_has_wechat();
+}
+inline void PersonInfo::set_has_wechat() {
+  _impl_._oneof_case_[0] = kWechat;
+}
+inline void PersonInfo::clear_wechat() {
+  if (_internal_has_wechat()) {
+    _impl_.chat_way_.wechat_.Destroy();
+    clear_has_chat_way();
+  }
+}
+inline const std::string& PersonInfo::wechat() const {
+  // @@protoc_insertion_point(field_get:contact.PersonInfo.wechat)
+  return _internal_wechat();
+}
+template <typename ArgT0, typename... ArgT>
+inline void PersonInfo::set_wechat(ArgT0&& arg0, ArgT... args) {
+  if (!_internal_has_wechat()) {
+    clear_chat_way();
+    set_has_wechat();
+    _impl_.chat_way_.wechat_.InitDefault();
+  }
+  _impl_.chat_way_.wechat_.Set( static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:contact.PersonInfo.wechat)
+}
+inline std::string* PersonInfo::mutable_wechat() {
+  std::string* _s = _internal_mutable_wechat();
+  // @@protoc_insertion_point(field_mutable:contact.PersonInfo.wechat)
+  return _s;
+}
+inline const std::string& PersonInfo::_internal_wechat() const {
+  if (_internal_has_wechat()) {
+    return _impl_.chat_way_.wechat_.Get();
+  }
+  return ::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited();
+}
+inline void PersonInfo::_internal_set_wechat(const std::string& value) {
+  if (!_internal_has_wechat()) {
+    clear_chat_way();
+    set_has_wechat();
+    _impl_.chat_way_.wechat_.InitDefault();
+  }
+  _impl_.chat_way_.wechat_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PersonInfo::_internal_mutable_wechat() {
+  if (!_internal_has_wechat()) {
+    clear_chat_way();
+    set_has_wechat();
+    _impl_.chat_way_.wechat_.InitDefault();
+  }
+  return _impl_.chat_way_.wechat_.Mutable(      GetArenaForAllocation());
+}
+inline std::string* PersonInfo::release_wechat() {
+  // @@protoc_insertion_point(field_release:contact.PersonInfo.wechat)
+  if (_internal_has_wechat()) {
+    clear_has_chat_way();
+    return _impl_.chat_way_.wechat_.Release();
+  } else {
+    return nullptr;
+  }
+}
+inline void PersonInfo::set_allocated_wechat(std::string* wechat) {
+  if (has_chat_way()) {
+    clear_chat_way();
+  }
+  if (wechat != nullptr) {
+    set_has_wechat();
+    _impl_.chat_way_.wechat_.InitAllocated(wechat, GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(field_set_allocated:contact.PersonInfo.wechat)
+}
+
+// map<string, string> remark = 7;
+inline int PersonInfo::_internal_remark_size() const {
+  return _impl_.remark_.size();
+}
+inline int PersonInfo::remark_size() const {
+  return _internal_remark_size();
+}
+inline void PersonInfo::clear_remark() {
+  _impl_.remark_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PersonInfo::_internal_remark() const {
+  return _impl_.remark_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PersonInfo::remark() const {
+  // @@protoc_insertion_point(field_map:contact.PersonInfo.remark)
+  return _internal_remark();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PersonInfo::_internal_mutable_remark() {
+  return _impl_.remark_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PersonInfo::mutable_remark() {
+  // @@protoc_insertion_point(field_mutable_map:contact.PersonInfo.remark)
+  return _internal_mutable_remark();
+}
+
+inline bool PersonInfo::has_chat_way() const {
+  return chat_way_case() != CHAT_WAY_NOT_SET;
+}
+inline void PersonInfo::clear_has_chat_way() {
+  _impl_._oneof_case_[0] = CHAT_WAY_NOT_SET;
+}
+inline PersonInfo::ChatWayCase PersonInfo::chat_way_case() const {
+  return PersonInfo::ChatWayCase(_impl_._oneof_case_[0]);
+}
 // -------------------------------------------------------------------
 
 // Contacts
@@ -865,6 +1562,10 @@ Contacts::contacts() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

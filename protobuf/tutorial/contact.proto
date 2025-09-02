@@ -1,0 +1,57 @@
+//指定语法规则
+syntax = "proto3";
+//命名空间
+package contact;
+//联系人Message
+
+import "google/protobuf/any.proto";
+
+message Phone
+{
+	enum PhoneType
+	{
+		Mobile_Phone = 0;
+		TELEPHONE = 1;
+	}
+    string number = 1;
+	PhoneType type = 2;
+}
+
+message Address
+{
+	string home_address = 1;
+	string unit_address = 2;
+}
+
+message PersonInfo
+{
+    //1 代表name
+    string name = 1;
+    //2 代表年龄
+    int32 age = 2;
+    //电话合集: 数组
+    repeated Phone phone_numbsers = 3;
+	//支持Any类型
+	google.protobuf.Any data = 4;
+
+	//oneof 来约束qq 或者 wechat 中的一个，多选一
+	//如果先后设置了qq,wechat，那么保留wechat
+	oneof chat_way
+	{
+		//oneof 中禁止使用repeated 
+		string qq = 5;
+		string wechat = 6;
+	}
+	//key-type   : 支持除float、bytes以外的所有标量类型，
+	//value-type : 支持任意类型
+	map<string,string> remark = 7;
+
+}
+
+message Contacts
+{
+    repeated PersonInfo contacts = 1; 
+}
+
+
+

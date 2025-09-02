@@ -17,6 +17,40 @@ void show(contact::Contacts *contacts)
 			std::cout << "Phone" << j+1 << ": " << phone.number() << 
 				"(" << phone.PhoneType_Name(phone.type()) << ")" << std::endl;
 		}
+
+		if(person.has_data() && person.data().Is<contact::Address>())
+		{
+			contact::Address address;
+			person.data().UnpackTo(&address);
+			if(address.home_address().empty() == false){
+			 	std::cout << "Home-address: " << address.home_address() << std::endl;
+			}
+			if(address.unit_address().empty() == false){
+			 	std::cout << "Home-address: " << address.unit_address() << std::endl;
+			}
+		}
+
+		// if(person.has_qq()){
+		// 	std::cout << "QQ: " << person.qq() << std::endl;
+		// }
+		// else if(person.has_wechat())
+		// {
+		// 	std::cout << "Wechat: " << person.wechat() << std::endl;
+		// }
+		switch(person.chat_way_case())
+		{
+			case contact::PersonInfo::ChatWayCase::kQq:
+				std::cout << "QQ: " << person.qq() << std::endl;
+				break;
+			case contact::PersonInfo::ChatWayCase::kWechat:
+				std::cout << "Wechat: " << person.wechat() << std::endl;
+				break;
+		}
+
+		for(auto iter = person.remark().cbegin();iter != person.remark().cend();iter++)
+		{
+			std::cout << iter->first << ": " << iter->second << std::endl;
+		}
 	}
 }
 
@@ -36,7 +70,7 @@ void ReadFile()
     }
 	show(&contacts);
     ifs.close();
-
+	
 }
 
 
