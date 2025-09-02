@@ -1,5 +1,8 @@
-main:main.cc
+.PHONY:clean all
+all:server client
+server:server.cc contact.pb.cc
 	g++ $^ -o $@ -lpthread
-.PHONY:clean
+client:client.cc contact.pb.cc
+	g++ $^ -o $@ -lpthread
 clean:
-	rm main
+	rm server client
