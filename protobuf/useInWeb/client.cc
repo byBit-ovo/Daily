@@ -22,9 +22,45 @@ void menu(){
 }
 void buildReq(contact::Add_Request &req)
 {
+  	int32_t age;
+    std::string name;
+    std::cout << "姓名：";
+    std::getline(std::cin,name);
+    std::cout << "年龄：";
+    std::cin >> age;
+    req.set_age(age);
+    req.set_name(name);
+    std::cin.ignore(256,'\n');
+	while(1){
+		std::cout << "电话：" ;
+		std::string number;
+		std::getline(std::cin,number);
+		if(number.empty()){
+			break;
+		}
+		std::cout << "选择电话类型(0: 移动电话， 1: 座机)";
+		int type;
+		std::cin >> type;
+		std::cin.ignore(256,'\n');
+		contact::Add_Request_Phone * phones = req.add_phone_numbsers();
+		phones->set_number(number);
+		switch(type)
+		{
+			case 0: 
+				phones->set_type(contact::Add_Request::Phone::PhoneType::Add_Request_Phone_PhoneType_Mobile_Phone);
+				break;
+			case 1: 
+				phones->set_type(contact::Add_Request::Phone::PhoneType::Add_Request_Phone_PhoneType_TELEPHONE);
+				break;
+			default:
+				std::cout << "类型有误" << std::endl;
+				return;
+		}
+
+	}
 
 }
-void addContact(httplib::Client &client)
+void addContact()
 {
 
 	//construct req
@@ -90,7 +126,7 @@ int main()
 			switch (op)
 			{
 				case QUIT: 		std::cout << "程序退出..." << std::endl; return 1;
-				case ADD: 		addContact(client); break;
+				case ADD: 		addContact(); break;
 				case DELETE:	deleteContact();	break;
 				case LIST:		List();				break;
 				case FIND:		Find();				break;
