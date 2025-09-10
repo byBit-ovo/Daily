@@ -1,3 +1,6 @@
+#include <cstddef>
+#include <string>
+using std::string;
 struct BKDRHash
 {
 	size_t operator()(const string &s)

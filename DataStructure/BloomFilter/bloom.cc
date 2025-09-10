@@ -39,6 +39,23 @@ void test()
 
 int main()
 {
-	BloomFilter<100> filter;
+	BloomFilter<10> filter;
+	filter.Set("hello");
+	filter.Set("good");
+	filter.Set("morning");
+	filter.Set("weather");
+	filter.Set("sunny");
+	filter.Set("monday");
+	filter.Set("football");
+	filter.Set("666");
+	filter.Set("93842");
+	cout << filter.IsSet("hello") << endl;
+	cout << filter.IsSet("good") << endl;
+	cout << filter.IsSet("helll") << endl;
+	cout << filter.IsSet("gooe") << endl;
+	cout << filter.IsSet("weadher") << endl;
+	cout << filter.IsSet("mondey") << endl;
+	cout << filter.IsSet("666") << endl;
+	cout << filter.IsSet("938") << endl;
 	return 0;
 }
