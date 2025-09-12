@@ -15,31 +15,40 @@ class SkipList
 		{
 
 		}
-		bool Insert(const T &val);
-		bool Search(const T &val)
+		bool Insert(const T &val)
 		{
+			//record prev pointer when traversing backwards
+			std::vector<node*> prevs(_maxLevel,_dummy);
+			
+
+		}
+		bool Search(const T &target)
+		{
+			//higher the level is, further it can jump 
 			int level = _dummy->_nexts.size() - 1;
 			node* cur = _dummy;
 			while(level >= 0)
 			{
-				const T& nxt = cur->_nexts[level]->_val;
-				if(val > nxt)
+				auto &next = cur->_nexts[level];
+				if(next == nullptr || next->_val > target)
 				{
-					cur = cur->_nexts[level];	//jump
+					--level;
 				}
-				else if(val < nxt)
+				else if(next->_val < target)
 				{
-					--level;  		// sink
+					cur = next;
 				}
 				else
 				{
 					return true;
 				}
-
+				
 			}
+			return false;
 		}
 		bool Remove(const T &val);
 
 	private:
 		node *_dummy;
+		int _maxLevel = 5;
 };
