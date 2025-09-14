@@ -1,3 +1,4 @@
+class ListNode;
 
 ListNode* reverse(ListNode* node)
 {
