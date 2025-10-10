@@ -23,17 +23,73 @@ func yearsUntilEvents(age int) (int,int,int){
 	}
 	return a, b, c
 }
+
+
+type Car struct {
+	price float64
+	color int
+	wheels_count int
+}
+
+type Calculator struct {
+	op1 int
+	op2 int
+}
+func (cr Calculator) Add() int{
+	return cr.op1 + cr.op2
+}
+
+type Animal interface{
+	speak() 
+}
+type Dog struct {
+
+}
+type Cat struct {
+
+}
+
+func (dog Dog) speak(){
+	fmt.Printf("Woof!\n")
+}
+func (cat Cat) speak(){
+	fmt.Printf("Miao~\n")
+}
+func test(animal Animal){
+	animal.speak()
+}
+
+func detect(animal Animal){
+	switch v:= animal.(type){
+	case Dog:
+		fmt.Printf("This is a dog!\n")
+		v.speak()
+	case Cat:
+		fmt.Printf("This is a cat!\n")
+		v.speak()
+	default:
+		fmt.Printf("None\n")
+	}
+}
+
 func main() {
-	// var str string 
-	// var a int8 
-	// var b float64
+	detect(Dog{})
+	detect(Cat{})
+	test(Dog{})
+	test(Cat{})
+	ret1 := Calculator{
+		op1 : 34,
+		op2 : 82,
+	}
+	fmt.Printf("%d\n",ret1.Add())
 	// a := 1
 	// b := 3.1
-	// str := "woof"
-	// c, d, e := 23, false,3.14
-	// fmt.Printf("Type: %T\n",c)
-	// fmt.Printf("Type: %T\n",d)
-	// fmt.Printf("Type: %T\n",e)
+	str := "woof"
+	c, d, e := 23, false,3.14
+	fmt.Printf("%d,Type: %T\n",c,c)
+	fmt.Printf("%v,Type: %T\n",d,d)
+	fmt.Printf("%.2f,Type: %T\n",e,e)
+	fmt.Printf(str + "\n")
 	const name = "byBit"
 	const place = "BeiJing"
 	msg := fmt.Sprintf("Hello,%s,You are in %s\n",name,place)
@@ -48,5 +104,22 @@ func main() {
 	fmt.Printf(concat("former, ","latter\n"))
 	x,y,z := yearsUntilEvents(20)
 	fmt.Printf("%d,%d,%d\n",x,y,z)
-
+	bench_car := Car{
+		price : 89.2,
+		wheels_count : 1,
+		color : 4,
+	}
+	// anonymous struct:
+	my_car := struct {
+		Make string
+		Model string
+	}{
+		Make: "Tesla",
+		Model: "Model 3",
+	}
+	fmt.Printf("%.2f\n",bench_car.price)
+	fmt.Printf("%d\n",bench_car.wheels_count)
+	fmt.Printf("%d\n",bench_car.color)
+	fmt.Printf(my_car.Model + "\n")
+	fmt.Printf(my_car.Make + "\n")
 }
