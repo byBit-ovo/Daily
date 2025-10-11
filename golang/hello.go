@@ -73,53 +73,57 @@ func detect(animal Animal){
 }
 
 func main() {
-	detect(Dog{})
-	detect(Cat{})
-	test(Dog{})
-	test(Cat{})
-	ret1 := Calculator{
-		op1 : 34,
-		op2 : 82,
+	for a:=0;a<11;a=a+1{
+		fmt.Printf("%d ",a)
 	}
-	fmt.Printf("%d\n",ret1.Add())
-	// a := 1
-	// b := 3.1
-	str := "woof"
-	c, d, e := 23, false,3.14
-	fmt.Printf("%d,Type: %T\n",c,c)
-	fmt.Printf("%v,Type: %T\n",d,d)
-	fmt.Printf("%.2f,Type: %T\n",e,e)
-	fmt.Printf(str + "\n")
-	const name = "byBit"
-	const place = "BeiJing"
-	msg := fmt.Sprintf("Hello,%s,You are in %s\n",name,place)
-	fmt.Printf(msg)
+	fmt.Printf("\n")
+	// detect(Dog{})
+	// detect(Cat{})
+	// test(Dog{})
+	// test(Cat{})
+	// ret1 := Calculator{
+	// 	op1 : 34,
+	// 	op2 : 82,
+	// }
+	// fmt.Printf("%d\n",ret1.Add())
+	// // a := 1
+	// // b := 3.1
+	// str := "woof"
+	// c, d, e := 23, false,3.14
+	// fmt.Printf("%d,Type: %T\n",c,c)
+	// fmt.Printf("%v,Type: %T\n",d,d)
+	// fmt.Printf("%.2f,Type: %T\n",e,e)
+	// fmt.Printf(str + "\n")
+	// const name = "byBit"
+	// const place = "BeiJing"
+	// msg := fmt.Sprintf("Hello,%s,You are in %s\n",name,place)
+	// fmt.Printf(msg)
 	
-	if a := 1 ; a < 0{
-		fmt.Printf("greater than 0\n")
-	}else{
-		fmt.Printf("%d\n",a)
-	}
+	// if a := 1 ; a < 0{
+	// 	fmt.Printf("greater than 0\n")
+	// }else{
+	// 	fmt.Printf("%d\n",a)
+	// }
 
-	fmt.Printf(concat("former, ","latter\n"))
-	x,y,z := yearsUntilEvents(20)
-	fmt.Printf("%d,%d,%d\n",x,y,z)
-	bench_car := Car{
-		price : 89.2,
-		wheels_count : 1,
-		color : 4,
-	}
-	// anonymous struct:
-	my_car := struct {
-		Make string
-		Model string
-	}{
-		Make: "Tesla",
-		Model: "Model 3",
-	}
-	fmt.Printf("%.2f\n",bench_car.price)
-	fmt.Printf("%d\n",bench_car.wheels_count)
-	fmt.Printf("%d\n",bench_car.color)
-	fmt.Printf(my_car.Model + "\n")
-	fmt.Printf(my_car.Make + "\n")
+	// fmt.Printf(concat("former, ","latter\n"))
+	// x,y,z := yearsUntilEvents(20)
+	// fmt.Printf("%d,%d,%d\n",x,y,z)
+	// bench_car := Car{
+	// 	price : 89.2,
+	// 	wheels_count : 1,
+	// 	color : 4,
+	// }
+	// // anonymous struct:
+	// my_car := struct {
+	// 	Make string
+	// 	Model string
+	// }{
+	// 	Make: "Tesla",
+	// 	Model: "Model 3",
+	// }
+	// fmt.Printf("%.2f\n",bench_car.price)
+	// fmt.Printf("%d\n",bench_car.wheels_count)
+	// fmt.Printf("%d\n",bench_car.color)
+	// fmt.Printf(my_car.Model + "\n")
+	// fmt.Printf(my_car.Make + "\n")
 }
