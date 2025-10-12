@@ -73,10 +73,25 @@ func detect(animal Animal){
 }
 
 func main() {
-	for a:=0;a<11;a=a+1{
-		fmt.Printf("%d ",a)
-	}
-	fmt.Printf("\n")
+	// arr := [5]int{1, 2, 3, 4, 5}
+	// s1 := arr[1:3]
+	// s2 := s1 // 拷贝切片结构体（三个字段）
+
+	// s2[0] = 100
+	// fmt.Println(s1) // [100 3]
+	// fmt.Println(arr) // [1 100 3 4 5]
+
+	arr := [10]int {1,3,4,5,6,7,82}
+	arr2 := arr[1:6]
+	arr2[0] = -1
+	fmt.Println(arr)
+	fmt.Println(arr2)
+	fmt.Println(1,2,3)
+	// fmt.Printf("\n")
+	// for a:=0;a<11;a=a+1{
+	// 	fmt.Printf("%d ",a)
+	// }
+	// fmt.Printf("\n")
 	// detect(Dog{})
 	// detect(Cat{})
 	// test(Dog{})
