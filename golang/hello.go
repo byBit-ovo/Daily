@@ -72,7 +72,39 @@ func detect(animal Animal){
 	}
 }
 
+func sumFunc(nums ...int) int{
+	sum := 0
+	for i:=0;i<len(nums);i++{
+		sum += nums[i]
+	}
+	return sum
+}
+func createMatrix(r, c int) [][]int{
+	matrix := make([][]int,0)
+	for i:=0;i<r;i++{
+		matrix = append(matrix, []int{})
+		for j:=0;j<c;j++{
+			matrix[i] = append(matrix[i], i*j)
+		}
+	}
+	return matrix
+}
 func main() {
+	//vector<vector<int>>
+	matrix := [][]int{}
+	matrix = append(matrix,[]int{1,2,3})
+	matrix = append(matrix,[]int{1,2})
+	matrix = append(matrix,[]int{1})
+	fmt.Println(matrix)
+	for row, ele := range matrix{
+		fmt.Println(row,ele)
+	}
+	// b := [3]int{}
+	// a := b[:]
+	// a = append(a,a...)
+	// fmt.Println(a)
+	// matrix := [][]int
+
 	// arr := [5]int{1, 2, 3, 4, 5}
 	// s1 := arr[1:3]
 	// s2 := s1 // 拷贝切片结构体（三个字段）
@@ -81,12 +113,12 @@ func main() {
 	// fmt.Println(s1) // [100 3]
 	// fmt.Println(arr) // [1 100 3 4 5]
 
-	arr := [10]int {1,3,4,5,6,7,82}
-	arr2 := arr[1:6]
-	arr2[0] = -1
-	fmt.Println(arr)
-	fmt.Println(arr2)
-	fmt.Println(1,2,3)
+	// arr := [10]int {1,3,4,5,6,7,82}
+	// arr2 := arr[1:6]
+	// arr2[0] = -1
+	// fmt.Println(arr)
+	// fmt.Println(arr2)
+	// fmt.Println(1,2,3)
 	// fmt.Printf("\n")
 	// for a:=0;a<11;a=a+1{
 	// 	fmt.Printf("%d ",a)
