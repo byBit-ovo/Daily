@@ -89,16 +89,34 @@ func createMatrix(r, c int) [][]int{
 	}
 	return matrix
 }
+
+
 func main() {
-	//vector<vector<int>>
-	matrix := [][]int{}
-	matrix = append(matrix,[]int{1,2,3})
-	matrix = append(matrix,[]int{1,2})
-	matrix = append(matrix,[]int{1})
-	fmt.Println(matrix)
-	for row, ele := range matrix{
-		fmt.Println(row,ele)
+	ages := make(map[string]int)
+	ages["Tom"] = 12
+	ages["Jack"] = 8
+	ages["uuoo"] += 3
+	fmt.Println(ages["uuoo"])
+	hobby := map[string]string{
+		"Jerry": "cheese",
+		"Tom": "Jerry",
 	}
+	for key,value:= range hobby{
+		fmt.Println(key,":",value)
+	}
+	key1, ok1 := hobby["Jerry"]
+	key2, ok2 := hobby["T"]
+	fmt.Println(key1,ok1)
+	fmt.Println(key2,ok2)
+	//vector<vector<int>>
+	// matrix := [][]int{}
+	// matrix = append(matrix,[]int{1,2,3})
+	// matrix = append(matrix,[]int{1,2})
+	// matrix = append(matrix,[]int{1})
+	// fmt.Println(matrix)
+	// for row, ele := range matrix{
+	// 	fmt.Println(row,ele)
+	// }
 	// b := [3]int{}
 	// a := b[:]
 	// a = append(a,a...)
