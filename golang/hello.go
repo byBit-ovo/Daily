@@ -91,23 +91,40 @@ func createMatrix(r, c int) [][]int{
 }
 
 
+func aggregate(a,b,c int, calculate func(int, int) int ) int{
+	return calculate(calculate(a,b),c)
+}
+func testRAII(num int){
+	defer fmt.Println("hello")
+	if num == 0{
+		return
+	}
+}
 func main() {
-	ages := make(map[string]int)
-	ages["Tom"] = 12
-	ages["Jack"] = 8
-	ages["uuoo"] += 3
-	fmt.Println(ages["uuoo"])
-	hobby := map[string]string{
-		"Jerry": "cheese",
-		"Tom": "Jerry",
-	}
-	for key,value:= range hobby{
-		fmt.Println(key,":",value)
-	}
-	key1, ok1 := hobby["Jerry"]
-	key2, ok2 := hobby["T"]
-	fmt.Println(key1,ok1)
-	fmt.Println(key2,ok2)
+	a := 1
+	pa := &a
+	fmt.Println(*pa)
+	// testRAII(1)
+	// testRAII(0)
+	// testRAII(2)
+	// fmt.Println(aggregate(1,4,8,add))
+
+	// ages := make(map[string]int)
+	// ages["Tom"] = 12
+	// ages["Jack"] = 8
+	// ages["uuoo"] += 3
+	// fmt.Println(ages["uuoo"])
+	// hobby := map[string]string{
+	// 	"Jerry": "cheese",
+	// 	"Tom": "Jerry",
+	// }
+	// for key,value:= range hobby{
+	// 	fmt.Println(key,":",value)
+	// }
+	// key1, ok1 := hobby["Jerry"]
+	// key2, ok2 := hobby["T"]
+	// fmt.Println(key1,ok1)
+	// fmt.Println(key2,ok2)
 	//vector<vector<int>>
 	// matrix := [][]int{}
 	// matrix = append(matrix,[]int{1,2,3})
