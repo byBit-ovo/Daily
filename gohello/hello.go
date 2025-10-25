@@ -101,9 +101,9 @@ func testRAII(num int){
 	}
 }
 func main() {
-	a := 1
-	pa := &a
-	fmt.Println(*pa)
+	// a := 1
+	// pa := &a
+	// fmt.Println(*pa)
 	// testRAII(1)
 	// testRAII(0)
 	// testRAII(2)
