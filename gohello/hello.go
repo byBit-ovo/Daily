@@ -1,106 +1,27 @@
 package main
 
-import "fmt"
-func add(a,b int) int{
-	return a+b
-}
-func concat(s1 string, s2 string) string{
-	return s1 + s2
-}
-
-func yearsUntilEvents(age int) (int,int,int){
-	a := 18 - age
-	if a < 0{
-		a = 0
-	}
-	b := 20 - age
-	if b < 0{
-		b = 0
-	}
-	c := 25 - age
-	if c < 0{
-		c = 0
-	}
-	return a, b, c
-}
-
-
-type Car struct {
-	price float64
-	color int
-	wheels_count int
-}
-
-type Calculator struct {
-	op1 int
-	op2 int
-}
-func (cr Calculator) Add() int{
-	return cr.op1 + cr.op2
-}
-
-type Animal interface{
-	speak() 
-}
-type Dog struct {
-
-}
-type Cat struct {
-
-}
-
-func (dog Dog) speak(){
-	fmt.Printf("Woof!\n")
-}
-func (cat Cat) speak(){
-	fmt.Printf("Miao~\n")
-}
-func test(animal Animal){
-	animal.speak()
-}
-
-func detect(animal Animal){
-	switch v:= animal.(type){
-	case Dog:
-		fmt.Printf("This is a dog!\n")
-		v.speak()
-	case Cat:
-		fmt.Printf("This is a cat!\n")
-		v.speak()
-	default:
-		fmt.Printf("None\n")
+import (
+	"fmt"
+	// "github.com/byBit-ovo/strings"		//module name
+	"time"
+)
+func ThreadEntry(){
+	for a:=0;a < 5;a++{
+		fmt.Println(a)
+		time.Sleep(time.Second)
 	}
 }
-
-func sumFunc(nums ...int) int{
-	sum := 0
-	for i:=0;i<len(nums);i++{
-		sum += nums[i]
-	}
-	return sum
-}
-func createMatrix(r, c int) [][]int{
-	matrix := make([][]int,0)
-	for i:=0;i<r;i++{
-		matrix = append(matrix, []int{})
-		for j:=0;j<c;j++{
-			matrix[i] = append(matrix[i], i*j)
-		}
-	}
-	return matrix
-}
-
-
-func aggregate(a,b,c int, calculate func(int, int) int ) int{
-	return calculate(calculate(a,b),c)
-}
-func testRAII(num int){
-	defer fmt.Println("hello")
-	if num == 0{
-		return
-	}
-}
+var num = 1
 func main() {
+	arr := make([]int,5,10)
+	arr2 := append(arr,1)
+	fmt.Println(arr)
+	fmt.Println(arr2)
+	fmt.Println(num)
+	
+	// go ThreadEntry()
+	// time.Sleep(time.Second * 10)
+	// fmt.Println(1)
 	// a := 1
 	// pa := &a
 	// fmt.Println(*pa)
@@ -208,4 +129,103 @@ func main() {
 	// fmt.Printf("%d\n",bench_car.color)
 	// fmt.Printf(my_car.Model + "\n")
 	// fmt.Printf(my_car.Make + "\n")
+}
+func add(a,b int) int{
+	return a+b
+}
+func concat(s1 string, s2 string) string{
+	return s1 + s2
+}
+
+func yearsUntilEvents(age int) (int,int,int){
+	a := 18 - age
+	if a < 0{
+		a = 0
+	}
+	b := 20 - age
+	if b < 0{
+		b = 0
+	}
+	c := 25 - age
+	if c < 0{
+		c = 0
+	}
+	return a, b, c
+}
+
+
+type Car struct {
+	price float64
+	color int
+	wheels_count int
+}
+
+type Calculator struct {
+	op1 int
+	op2 int
+}
+func (cr Calculator) Add() int{
+	return cr.op1 + cr.op2
+}
+
+type Animal interface{
+	speak() 
+}
+type Dog struct {
+
+}
+type Cat struct {
+
+}
+
+func (dog Dog) speak(){
+	fmt.Printf("Woof!\n")
+}
+func (cat Cat) speak(){
+	fmt.Printf("Miao~\n")
+}
+func test(animal Animal){
+	animal.speak()
+}
+
+func detect(animal Animal){
+	switch v:= animal.(type){
+	case Dog:
+		fmt.Printf("This is a dog!\n")
+		v.speak()
+	case Cat:
+		fmt.Printf("This is a cat!\n")
+		v.speak()
+	default:
+		fmt.Printf("None\n")
+	}
+}
+
+func sumFunc(nums ...int) int{
+	sum := 0
+	for i:=0;i<len(nums);i++{
+		sum += nums[i]
+	}
+	return sum
+}
+func createMatrix(r, c int) [][]int{
+	matrix := make([][]int,0)
+	for i:=0;i<r;i++{
+		matrix = append(matrix, []int{})
+		for j:=0;j<c;j++{
+			matrix[i] = append(matrix[i], i*j)
+		}
+	}
+	return matrix
+}
+
+
+func aggregate(a,b,c int, calculate func(int, int) int ) int{
+	return calculate(calculate(a,b),c)
+}
+func testRAII(num int){
+	defer fmt.Println("hello")
+	if num == 0{
+		return
+	}
 }
