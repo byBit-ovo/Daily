@@ -11,13 +11,31 @@ func ThreadEntry(){
 		time.Sleep(time.Second)
 	}
 }
+
 var num = 1
+type Number interface{
+	~int | ~float64 | ~string
+}
+func Add[T Number](a,b T) T{
+	return a+b
+}
 func main() {
-	arr := make([]int,5,10)
-	arr2 := append(arr,1)
-	fmt.Println(arr)
-	fmt.Println(arr2)
-	fmt.Println(num)
+	fmt.Println(Add(1,2))
+	fmt.Println(Add(1.1,2.2))
+	fmt.Println(Add("hel","lo"))
+	// nums := []int{1,2,3,4,5}
+	// preNum := nums[:3]
+	// afNum := nums[3:]
+	// fmt.Println(preNum,afNum,nums)
+	// newNum := append(preNum,9)
+	// fmt.Println(preNum,afNum,nums,newNum)
+	// fmt.Printf("%v,%v",&nums[0],&newNum[0])
+
+	// arr := make([]int,5,10)
+	// arr2 := append(arr,1)
+	// fmt.Println(arr)
+	// fmt.Println(arr2)
+	// fmt.Println(num)
 	
 	// go ThreadEntry()
 	// time.Sleep(time.Second * 10)
