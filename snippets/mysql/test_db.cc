@@ -22,6 +22,14 @@ int main(){
         return 1;
     }
     std::cout << "MySQL connect success" << std::endl;
+    while(true) {
+        std::string command;
+        std::cout << "MySQL>>";
+        std::cin >> command;
+        if(command == "exit") {
+            break;
+        }
+    }
     mysql_close(sql);
     return 0;
 }
